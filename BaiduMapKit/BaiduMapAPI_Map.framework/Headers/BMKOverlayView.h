@@ -199,6 +199,7 @@
 - (BOOL)loadStrokeTextureImages:(NSArray *)textureImages;
 
 /// 使用分段颜色绘制时，必须设置（内容必须为UIColor）
+/// 注：请使用 - (UIColor *)initWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha; 初始化UIColor。使用[UIColor ***Color]初始化时，个别case转换成RGB后会有问题
 @property (nonatomic, strong) NSArray *colors;
 
 @end

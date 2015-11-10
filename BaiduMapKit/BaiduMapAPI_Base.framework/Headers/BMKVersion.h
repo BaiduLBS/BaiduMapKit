@@ -637,6 +637,36 @@
  4、修复使用xcode 7编译时SDK产生的编译警告；
  5、修复BMKMapView在特定的使用条件下crash的问题
  
+ 
+ --------------------
+ v2.9.1
+ 
+ 注：百度地图iOS SDK向广大开发者提供了配置更简单的 .framework形式的开发包，请开发者选择此种类型的开发包使用。自v2.9.0起，百度地图iOS SDK将不再提供 .a形式的开发包。
+ 自v2.9.0起，采用分包的形式提供 .framework包，请广大开发者使用时确保各分包的版本保持一致。其中BaiduMapAPI_Base.framework为基础包，使用SDK任何功能都需导入，其他分包可按需导入。
+ 
+ 【新版提示】
+ 1.自V2.9.0起，将启用新的地图资源服务，旧地图离线包在新版上不可使用；同时官方不再支持地图离线包下载，所以V2.9.0起，去掉“手动离线导入接口”，SDK离线下载接口维持不变。
+ 2.自V2.9.0起，iOS SDK采用分包形式，旧包无法与新包同时混用，请将之前所有旧包(包含bundle资源)并全部替换为新包。
+ 3.自V2.9.0起，iOS SDK使用新的矢量地图样式，地图显示更加清新，和百度地图客户端保持一致
+ 
+ 
+ 【 新  增 】
+   检索功能
+ 1、新增类：BMKPoiAddressInfo（POI门址信息类）
+ 2、BMKPoiResult新增接口：
+	///是否返回的有门址信息列表
+	@property (nonatomic, assign) BOOL isHavePoiAddressInfoList;
+	///门址信息列表，成员是BMKPoiAddrsInfo(当进行的是poi城市检索，且检索关键字是具体的门址信息（如在北京搜"上地十街10号"）时，会返回此信息)
+	@property (nonatomic, strong) NSArray* poiAddressInfoList;
+ 
+ 【 修  复 】
+ 1、修复iOS9后台定位问题；
+ 2、修复sug检索特殊case引起的crash的问题；
+ 3、修复自定义AnnotationView，启用3D效果后（enabled3D=YES）点击标注没有响应的问题；
+ 4、修复获取离线地图包大小信息时，包大小错误的问题。
+ 
+ 
+ 
  *********************/
 /**
  *获取当前地图API的版本号
@@ -644,12 +674,12 @@
  */
 UIKIT_STATIC_INLINE NSString* BMKGetMapApiVersion()
 {
-    return @"2.9.0";
+    return @"2.9.1";
 }
 
 /**
  *获取当前地图API base组件 的版本号
- *当前base组件版本 : 2.9.0
+ *当前base组件版本 : 2.9.1
  *return  返回当前API base组件 的版本号
  */
 UIKIT_EXTERN NSString* BMKGetMapApiBaseComponentVersion();

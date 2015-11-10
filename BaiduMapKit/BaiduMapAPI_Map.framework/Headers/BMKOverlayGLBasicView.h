@@ -15,8 +15,10 @@
 }
 
 /// 填充颜色
+/// 注：请使用 - (UIColor *)initWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha; 初始化UIColor，使用[UIColor ***Color]初始化时，个别case转换成RGB后会有问题
 @property (strong, nonatomic) UIColor *fillColor;
 /// 画笔颜色
+/// 注：请使用 - (UIColor *)initWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha; 初始化UIColor，使用[UIColor ***Color]初始化时，个别case转换成RGB后会有问题
 @property (strong, nonatomic) UIColor *strokeColor;
 /// 画笔宽度，默认为0
 @property  (nonatomic) CGFloat lineWidth;

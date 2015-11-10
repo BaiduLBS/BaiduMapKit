@@ -68,6 +68,17 @@ enum {
 @property (nonatomic) CLLocationCoordinate2D pt;
 @end
 
+///POI门址信息类
+@interface BMKPoiAddressInfo : NSObject
+
+///名称
+@property (nonatomic, strong) NSString* name;
+///地址
+@property (nonatomic, strong) NSString* address;
+///坐标
+@property (nonatomic, assign) CLLocationCoordinate2D pt;
+
+@end
 
 
 ///POI搜索结果类
@@ -92,7 +103,12 @@ enum {
 ///POI列表，成员是BMKPoiInfo
 @property (nonatomic, strong) NSArray* poiInfoList;
 ///城市列表，成员是BMKCityListInfo
-@property (nonatomic, strong) NSArray* cityList;		
+@property (nonatomic, strong) NSArray* cityList;
+
+///是否返回的有门址信息列表
+@property (nonatomic, assign) BOOL isHavePoiAddressInfoList;
+///门址信息列表，成员是BMKPoiAddrsInfo(当进行的是poi城市检索，且检索关键字是具体的门址信息（如在北京搜"上地十街10号"）时，会返回此信息)
+@property (nonatomic, strong) NSArray* poiAddressInfoList;
 
 @end
 
