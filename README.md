@@ -244,9 +244,7 @@ BMKDistrictResult 行政区域检索结果类
 
 BMKShareURLSearch 新增获取路线规划短串分享方法:
 
-- (BOOL)requestRoutePlanShareURL:(BMKRoutePlanShareURLOption
-
-                                  )routePlanShareUrlSearchOption;
+- (BOOL)requestRoutePlanShareURL:(BMKRoutePlanShareURLOption *)routePlanShareUrlSearchOption;
 
 BMKShareURLSearchDelegate 新增返回路线规划分享url结果回调:
 
