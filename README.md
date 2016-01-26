@@ -38,7 +38,7 @@ LBS云检索：支持查询存储在LBS云内的自有数据；
 注意：百度地图iOS SDK向广大开发者提供了配置更简单的 .framework形式的开发包，请开发者选择此种类型的开发包使用。
 
 自v2.9.0起，百度地图iOS SDK将不再提供 .a形式的开发包。
-   
+
 自v2.9.0起，采用分包的形式提供 .framework包，请广大开发者使用时确保各分包的版本保持一致。
 
 其中BaiduMapAPI_Base.framework为基础包，使用SDK任何功能都需导入，其他分包可按需导入。
@@ -122,7 +122,7 @@ BMKDistrictResult 行政区域检索结果类
 3、新增驾车、公交、骑行、步行路径规划短串分享
 BMKShareURLSearch 新增获取路线规划短串分享方法:
 - (BOOL)requestRoutePlanShareURL:(BMKRoutePlanShareURLOption
-)routePlanShareUrlSearchOption;
+                                  )routePlanShareUrlSearchOption;
 BMKShareURLSearchDelegate 新增返回路线规划分享url结果回调:
 - (void)onGetRoutePlanShareURLResult:(BMKShareURLSearch *)searcher result:(BMKShareURLResult *)result errorCode:(BMKSearchErrorCode)error;
 
