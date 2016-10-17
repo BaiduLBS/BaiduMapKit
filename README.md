@@ -51,45 +51,83 @@ LBS云检索：支持查询存储在LBS云内的自有数据；
 ---------------------------------------------------------------------------------------
 
  【 新  增 】
+ 
    基础地图
+ 
  1、开放高清4K地图显示（无需设置）
+ 
  2、瓦片图新增异步加载方法：
+ 
     新增异步加载类：BMKAsyncTileLayer
+    
  3、新增地图渲染完成回调方法：
+ 
     - (void)mapViewDidFinishRendering:(BMKMapView *)mapView;
+    
  4、新增定位显示类型：BMKUserTrackingModeHeading（在普通定位模式的基础上显示方向）
  
+ 
    检索功能
+ 
  1、新增室内路径规划
+ 
     BMKRouteSearch新增发起室内路径规划接口：
+    
     - (BOOL)indoorRoutePlanSearch:(BMKIndoorRoutePlanOption*) indoorRoutePlanOption;
+    
     BMKRouteSearchDelegate新增室内路径规划结果回调：
+    
     - (void)onGetIndoorRouteResult:(BMKRouteSearch*)searcher result:(BMKIndoorRouteResult*)result errorCode:(BMKSearchErrorCode)error;
+    
     新增室内路径规划检索参数类：BMKIndoorRoutePlanOption
+    
     新增室内路径规划检索结果类：BMKIndoorRouteResult
+    
  2、增加新的公共交通线路规划（支持同城和跨城）
+ 
     BMKRouteSearch增加新的公共交通线路规划接口：
+    
     - (BOOL)massTransitSearch:(BMKMassTransitRoutePlanOption*)routePlanOption;
+    
     BMKRouteSearchDelegate增加新的公共交通线路规划结果回调：
+    
     - (void)onGetMassTransitRouteResult:(BMKRouteSearch*)searcher result:(BMKMassTransitRouteResult*)result errorCode:(BMKSearchErrorCode)error;
+    
     增加新的公共交通线路规划检索参数类：BMKMassTransitRoutePlanOption
+    
     增加新的公共交通线路规划检索结果类：BMKMassTransitRouteResult
+    
  
    LBS云检索
+ 
 1、新增云RGC检索功能
+
     BMKCloudSearch新增发起云RGC检索接口：
+    
     - (BOOL)cloudReverseGeoCodeSearch:(BMKCloudReverseGeoCodeSearchInfo*)searchInfo;
+    
     BMKCloudSearchDelegate新增云RGC检索结果回调：
+    
     - (void)onGetCloudReverseGeoCodeResult:(BMKCloudReverseGeoCodeResult*)cloudRGCResult searchType:(BMKCloudSearchType) type errorCode:(NSInteger) errorCode;
+    
     新增云RGC检索参数类：BMKCloudReverseGeoCodeSearchInfo
+    
     新增云RGC检索结果类：BMKCloudReverseGeoCodeResult
  
+ 
  【 优  化 】
+ 
  1、优化Marker加载性能：添加Marker和加载大量Marker时，性能大幅提高。
+ 
  2、优化地图内存
  
+ 
  【 修  复 】
+ 
  1、长按地图某区域，OnLongClick会被不停调用的问题
+ 
  2、绘制弧线，特殊case提示画弧失败的问题
+ 
  3、一次点击事件，点击地图空白处回调和点击覆盖物回调都会调用的问题
+ 
 
