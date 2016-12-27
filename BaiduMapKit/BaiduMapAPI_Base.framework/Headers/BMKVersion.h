@@ -948,6 +948,21 @@ v3.1.0
  2、修复特殊情况下，移除BMKGroundOverlay时的问题
  
  
+ --------------------
+ v3.2.1
+ 
+ 注：自v3.2.0起，百度地图iOS SDK全面支持HTTPS，需要广大开发者导入第三方openssl静态库：libssl.a和libcrypto.a（存放于thirdlib目录下）。
+ 
+ 【 新版提示 】
+ 1、自v3.2.0起，全面支持HTTPS
+ 2、自v3.2.0起，地图引擎全面升级，主要升级特征有：
+ 渲染架构技术升级，OpenGL ES从1.0升级到2.0
+ 地图数据加载升级，加载性能大幅提升
+ 
+ 【 修  复 】
+ 修复下载离线地图时，delegate方法返回state错误问题
+ 
+ 
  *********************/
 /**
  *获取当前地图API的版本号
@@ -955,12 +970,12 @@ v3.1.0
  */
 UIKIT_STATIC_INLINE NSString* BMKGetMapApiVersion()
 {
-    return @"3.2.0";
+    return @"3.2.1";
 }
 
 /**
  *获取当前地图API base组件 的版本号
- *当前base组件版本 : 3.2.0
+ *当前base组件版本 : 3.2.1
  *return  返回当前API base组件 的版本号
  */
 UIKIT_EXTERN NSString* BMKGetMapApiBaseComponentVersion();

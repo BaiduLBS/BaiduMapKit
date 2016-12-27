@@ -54,32 +54,6 @@ LBS云检索：支持查询存储在LBS云内的自有数据；
 地图数据加载升级，加载性能大幅提升
 
 
-【 新  增 】
-
-  检索功能
-
-1、建议检索支持港澳台；建议检索可控制只返回指定城市的检索结果
-
-BMKSuggestionSearchOption新增属性：
-
-///是否只返回指定城市检索结果（默认：NO）（提示：海外区域暂不支持设置cityLimit）
-
-@property (nonatomic, assign) BOOL cityLimit;
-
-2、反地址编码结果BMKReverseGeoCodeResult新增属性：
-
-///结合当前位置POI的语义化结果描述
-
-@property (nonatomic, strong) NSString* sematicDescription;
-
-
-【 优  化 】
-
-1、建议检索和反地址编码检索服务升级，提供更加优质的服务
-
-
 【 修  复 】
 
-1、修复国外定位偏移的问题
-
-2、修复特殊情况下，移除BMKGroundOverlay时的问题
+ 修复下载离线地图时，delegate方法返回state错误问题
