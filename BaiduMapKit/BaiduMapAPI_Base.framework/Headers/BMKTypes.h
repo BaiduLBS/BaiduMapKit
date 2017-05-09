@@ -180,5 +180,7 @@ UIKIT_EXTERN const BMKMapRect BMKMapRectNull;
 @property (nonatomic, strong) NSString* country;
 /// 国家代码
 @property (nonatomic, strong) NSString* countryCode;
+/// 行政区域编码
+@property (nonatomic, strong) NSString* adCode;
 
 @end
