@@ -5,7 +5,7 @@ LBS云检索：包括LBS云检索（周边、区域、城市内、详情）；
 
 --------------------------------------------------------------------------------------
 
-iOS 地图 SDK v3.3.1是适用于iOS系统移动设备的矢量地图开发包
+iOS 地图 SDK v3.3.2是适用于iOS系统移动设备的矢量地图开发包
 
 --------------------------------------------------------------------------------------
 
@@ -36,20 +36,17 @@ LBS云检索：支持查询存储在LBS云内的自有数据；
 
 --------------------------------------------------------------------------------------
  
-【 新 版 提 示 】
-【 注 意 】
-1、自v3.2.0起，百度地图iOS SDK全面支持HTTPS，需要广大开发者导入第三方openssl静态库：libssl.a和libcrypto.a（存放于thirdlib目录下）
-添加方法：在 TARGETS->Build Phases-> Link Binary With Libaries中点击“+”按钮，在弹出的窗口中点击“Add Other”按钮，选择libssl.a和libcrypto.a添加到工程中 。
-
-2、支持CocoaPods导入
-pod setup //更新CocoPods的本地库
-pod search BaiduMapKit  //下载最新地图SDK
-
-【 新 增 】
-[ 检 索 ]
-逆地理编码返回结果新增2个属性：cityCode(城市编码) 和adCode（行政区域编码）
-【 优 化 】
-1.增加重试机制，优化鉴权时长
-2.解决Xcode8.3编译时出现大量warning的问题
-3.swift Demo：swift语言升级为 swift v3.1，优化升级swift Demo。
+ 
+ 【 新 版 提 示 】
+ 【 注 意 】
+ 1、自v3.2.0起，百度地图iOS SDK全面支持HTTPS，需要广大开发者导入第三方openssl静态库：libssl.a和libcrypto.a（存放于thirdlib目录下）
+ 添加方法：在 TARGETS->Build Phases-> Link Binary With Libaries中点击“+”按钮，在弹出的窗口中点击“Add Other”按钮，选择libssl.a和libcrypto.a添加到工程中 。
+ 
+ 2、支持CocoaPods导入
+ pod setup //更新CocoPods的本地库
+ pod search BaiduMapKit  //查看最新地图SDK
+ 
+ 【 新 增 】
+ 【 优 化 】
+ 1.修复个性化地图在部分使用场景下，不显示的问题。（受影响版本v3.3.0、v3.3.1）
 

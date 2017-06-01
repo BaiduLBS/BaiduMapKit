@@ -1019,6 +1019,24 @@ v3.1.0
  2.解决Xcode8.3编译时出现大量warning的问题
  3.swift Demo：swift语言升级为 swift v3.1，优化升级swift Demo。
  
+ --------------------
+ v3.3.2
+ 
+ 
+ 【 新 版 提 示 】
+ 【 注 意 】
+ 1、自v3.2.0起，百度地图iOS SDK全面支持HTTPS，需要广大开发者导入第三方openssl静态库：libssl.a和libcrypto.a（存放于thirdlib目录下）
+ 添加方法：在 TARGETS->Build Phases-> Link Binary With Libaries中点击“+”按钮，在弹出的窗口中点击“Add Other”按钮，选择libssl.a和libcrypto.a添加到工程中 。
+ 
+ 2、支持CocoaPods导入
+ pod setup //更新CocoPods的本地库
+ pod search BaiduMapKit  //查看最新地图SDK
+ 
+ 【 新 增 】
+ 【 优 化 】
+ 1.修复个性化地图在部分使用场景下，不显示的问题。（受影响版本v3.3.0、v3.3.1）
+ 
+ 
  
  *********************/
 /**
@@ -1027,12 +1045,12 @@ v3.1.0
  */
 UIKIT_STATIC_INLINE NSString* BMKGetMapApiVersion()
 {
-    return @"3.3.1";
+    return @"3.3.2";
 }
 
 /**
  *获取当前地图API base组件 的版本号
- *当前base组件版本 : 3.3.1
+ *当前base组件版本 : 3.3.2
  *return  返回当前API base组件 的版本号
  */
 UIKIT_EXTERN NSString* BMKGetMapApiBaseComponentVersion();
