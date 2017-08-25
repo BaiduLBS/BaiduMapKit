@@ -37,7 +37,7 @@ typedef NS_ENUM(NSUInteger, LocationViewHierarchy) {
 @property (nonatomic, assign) BOOL isRotateAngleValid;
 ///定位图标名称，需要将该图片放到 mapapi.bundle/images 目录下
 @property (nonatomic, strong) NSString* locationViewImgName;
-///气泡是否显示，默认YES
+///是否显示气泡，默认YES
 @property (nonatomic, assign) BOOL canShowCallOut;
 ///locationView在mapview上的层级 默认值为LOCATION_VIEW_HIERARCHY_BOTTOM
 @property (nonatomic, assign) LocationViewHierarchy locationViewHierarchy;
