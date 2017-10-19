@@ -1107,7 +1107,28 @@ v3.1.0
 5.修复部分使用场景下，设置mapPadding时，overlay位置偏移的问题
 6.修复部分使用场景下，加载mapView闪黑屏的问题
 
-
+ --------------------
+ v3.4.2
+ 
+ 
+ 【 新 版 提 示 】
+ 【 注 意 】
+ 1、自v3.2.0起，百度地图iOS SDK全面支持HTTPS，需要广大开发者导入第三方openssl静态库：libssl.a和libcrypto.a（存放于thirdlib目录下）
+ 添加方法：在 TARGETS->Build Phases-> Link Binary With Libaries中点击“+”按钮，在弹出的窗口中点击“Add Other”按钮，选择libssl.a和libcrypto.a添加到工程中 。
+ 
+ 2、支持CocoaPods导入
+ pod setup //更新CocoPods的本地库
+ pod search BaiduMapKit  //查看最新地图SDK
+ 
+ 【修复】
+ 1.修复多页面多地图场景下，切换页面导致的crash问题。
+ 2.修复检索对象对delegate的强引用问题。
+ 3.修复在一些罕见场景下，Bugly报告的crash问题。
+ 4.修复第一次通过setBuildingsEnabled接口设置不显示3D楼块效果失效的BUG。
+ 
+ 【优化】
+ 1.删除annotation后，不再删除其对应的annotationView的subView。开发者dequeue出可重用的annotationView后，为了避免内容堆叠问题，可以自行去避免，如remove subview或者使用不同的reuseIdentifier等。
+ 2.每个reuseIdentifier可缓存多个annotationView，当开发者removeAnnotation时，SDK会将对应的annotationView加入缓存队列。
 
 
  *********************/
@@ -1117,12 +1138,12 @@ v3.1.0
  */
 UIKIT_STATIC_INLINE NSString* BMKGetMapApiVersion()
 {
-    return @"3.4.0";
+    return @"3.4.2";
 }
 
 /**
  *获取当前地图API base组件 的版本号
- *当前base组件版本 : 3.4.0
+ *当前base组件版本 : 3.4.2
  *return  返回当前API base组件 的版本号
  */
 UIKIT_EXTERN NSString* BMKGetMapApiBaseComponentVersion();
