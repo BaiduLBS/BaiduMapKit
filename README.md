@@ -6,7 +6,7 @@
 
 --------------------------------------------------------------------------------------
 
-iOS 地图 SDK v3.4.0是适用于iOS系统移动设备的矢量地图开发包
+iOS 地图 SDK v3.4.2是适用于iOS系统移动设备的矢量地图开发包
 
 --------------------------------------------------------------------------------------
 
@@ -36,52 +36,26 @@ LBS云检索：支持查询存储在LBS云内的自有数据；
 
 
 --------------------------------------------------------------------------------------
-
-
-【 新 版 提 示 】
-【 注 意 】
-
-1、自v3.2.0起，百度地图iOS SDK全面支持HTTPS，需要广大开发者导入第三方openssl静态库：libssl.a和libcrypto.a（存放于thirdlib目录下）
-添加方法：在 TARGETS->Build Phases-> Link Binary With Libaries中点击“+”按钮，在弹出的窗口中点击“Add Other”按钮，选择libssl.a和libcrypto.a添加到工程中 。
-
-2、支持CocoaPods导入
-pod setup //更新CocoPods的本地库
-pod search BaiduMapKit  //查看最新地图SDK
-
-【 新 增 】
-【基 础 地 图】
-1.新增当双击手势放大地图时，可以设置地图中心点是否移动至点击处的属性
-BMKMapView新增：
-///双击手势放大地图时, 设置为YES, 地图中心点移动至点击处; 设置为NO，地图中心点不变；默认为YES;
-@property(nonatomic, getter=isChangeCenterWithDoubleTouchPointEnabled) BOOL ChangeCenterWithDoubleTouchPointEnabled;
-
-2.支持标注锁定在屏幕固定位置
-BMKPointAnnotation新增：
-///Annotation固定在指定屏幕位置,  必须与screenPointToLock一起使用。 注意：拖动Annotation isLockedToScreen会被设置为false。
-///若isLockedToScreen为true，拖动地图时annotaion不会跟随移动；
-///若isLockedToScreen为false，拖动地图时annotation会跟随移动。
-@property (nonatomic, assign) BOOL isLockedToScreen;
-
-///标注在屏幕中锁定的位置，注意：地图初始化后才能设置screenPointToLock。可以在地图加载完成的回调方法：mapViewDidFinishLoading中使用此属性。
-@property (nonatomic, assign) CGPoint screenPointToLock;
-
-3.新增接口：设定地理范围在屏幕中的显示区域
-BMKMapView新增：
-/**
-*根据当前mapView的窗口大小，预留insets指定的边界区域后，将mapRect指定的地理范围显示在剩余的区域内，并尽量充满
-*@param mapRect 要显示的地图范围，用直角坐标系表示
-*@param insets 屏幕四周预留的最小边界（mapRect的内容不会显示在该边界范围内）
-*@param animate 是否采用动画效果
-*/
-- (void)fitVisibleMapRect:(BMKMapRect)mapRect edgePadding:(UIEdgeInsets)insets withAnimated:(BOOL)animate;
-
-【 优 化 】
-1.解决反复创建和销毁mapView时内存泄漏的问题
-2.对拖动标注时的弹跳动画效果进行优化
-3.修复mapView调用selectAnnotation方法时，回调didSelectAnnotationView不调用的问题。
-4.修复行政区域检索福建和浙江区域没有返回数据的问题
-5.修复部分使用场景下，设置mapPadding时，overlay位置偏移的问题
-6.修复部分使用场景下，加载mapView闪黑屏的问题
+ 
+ 
+ 【 新 版 提 示 】
+ 【 注 意 】
+ 1、自v3.2.0起，百度地图iOS SDK全面支持HTTPS，需要广大开发者导入第三方openssl静态库：libssl.a和libcrypto.a（存放于thirdlib目录下）
+ 添加方法：在 TARGETS->Build Phases-> Link Binary With Libaries中点击“+”按钮，在弹出的窗口中点击“Add Other”按钮，选择libssl.a和libcrypto.a添加到工程中 。
+ 
+ 2、支持CocoaPods导入
+ pod setup //更新CocoPods的本地库
+ pod search BaiduMapKit  //查看最新地图SDK
+ 
+ 【修复】
+ 1.修复多页面多地图场景下，切换页面导致的crash问题。
+ 2.修复检索对象对delegate的强引用问题。
+ 3.修复在一些罕见场景下，Bugly报告的crash问题。
+ 4.修复第一次通过setBuildingsEnabled接口设置不显示3D楼块效果失效的BUG。
+ 
+ 【优化】
+ 1.删除annotation后，不再删除其对应的annotationView的subView。开发者dequeue出可重用的annotationView后，为了避免内容堆叠问题，可以自行去避免，如remove subview或者使用不同的reuseIdentifier等。
+ 2.每个reuseIdentifier可缓存多个annotationView，当开发者removeAnnotation时，SDK会将对应的annotationView加入缓存队列。
 
 
 
