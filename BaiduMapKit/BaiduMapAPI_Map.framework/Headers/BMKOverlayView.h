@@ -148,7 +148,7 @@
  @param tileTexture 是否纹理图片平铺绘制
  @param keepScale 纹理图片是否缩放（tileTexture为YES时生效）
  */
-- (void)renderTexturedLinesWithPoints:(BMKMapPoint *)points pointCount:(NSUInteger)pointCount lineWidth:(CGFloat)lineWidth textureID:(GLuint)textureID strokeColor:(UIColor *)strokeColor tileTexture:(BOOL) tileTexture keepScale:(BOOL) keepscale;
+//- (void)renderTexturedLinesWithPoints:(BMKMapPoint *)points pointCount:(NSUInteger)pointCount lineWidth:(CGFloat)lineWidth textureID:(GLuint)textureID strokeColor:(UIColor *)strokeColor tileTexture:(BOOL) tileTexture keepScale:(BOOL) keepscale;
 
 /**
  *使用OpenGLES 分段纹理绘制线
