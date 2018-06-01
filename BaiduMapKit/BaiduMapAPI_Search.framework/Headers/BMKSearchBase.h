@@ -8,7 +8,7 @@
 
 #ifndef BMKSearchBase_h
 #define BMKSearchBase_h
-
+#import <BaiduMapAPI_Base/BMKTypes.h>
 ///检索服务基类
 @interface BMKSearchBase : NSObject
 

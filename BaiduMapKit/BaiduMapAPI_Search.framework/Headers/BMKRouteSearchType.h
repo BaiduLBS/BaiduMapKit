@@ -596,3 +596,14 @@ typedef enum
 @property (nonatomic, strong) NSArray* routes;
 
 @end
+
+#pragma mark - 城市列表信息类
+//城市列表信息类
+@interface BMKCityListInfo : NSObject
+
+//城市名称
+@property (nonatomic, strong) NSString *city;
+//该城市所含搜索结果数目
+@property (nonatomic, assign) NSInteger num;
+
+@end

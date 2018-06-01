@@ -7,13 +7,21 @@
 //
 
 #import "BMKSearchVersion.h"
-#import "BMKPoiSearchType.h"
-#import "BMKGeocodeType.h"
-#import "BMKRouteSearchType.h"
-#import "BMKPoiSearchOption.h"
+// POI检索
 #import "BMKPoiSearch.h"
+#import "BMKPoiSearchType.h"
+#import "BMKPoiSearchOption.h"
+#import "BMKPOISearchResult.h"
+
+// 地理编码
 #import "BMKGeocodeSearch.h"
-#import "BMKGeocodeSearchOption.h"
+#import "BMKGeoCodeSearchOption.h"
+#import "BMKGeocodeSearchResult.h"
+
+
+
+
+#import "BMKRouteSearchType.h"
 #import "BMKShareURLSearch.h"
 #import "BMKShareUrlSearchOption.h"
 #import "BMKSuggestionSearch.h"

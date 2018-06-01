@@ -136,10 +136,20 @@ typedef enum {
 ///设置mapPadding时，地图中心(屏幕坐标：BMKMapStatus.targetScreenPt)是否跟着改变，默认YES
 @property (nonatomic) BOOL updateTargetScreenPtWhenMapPaddingChanged;
 
-///设定地图View能否支持以手势中心点为轴进行旋转和缩放
+/**
+ 设定双指手势操作时，BMKMapView的旋转和缩放效果的中心点。
+ 设置为YES时，以手势的中心点（二个指头的中心点）为中心进行旋转和缩放，地图中心点会改变；
+ 设置为NO时，以当前地图的中心点为中心进行旋转和缩放，地图中心点不变；
+ 默认值为NO。
+ */
 @property(nonatomic, getter=isChangeWithTouchPointCenterEnabled) BOOL ChangeWithTouchPointCenterEnabled;
 
-///双击手势放大地图时, 设置为YES, 地图中心点移动至点击处; 设置为NO，地图中心点不变；默认为YES;
+/**
+ 设定双击手势放大地图时，BMKMapView的放大效果的中心点。
+ 设置为YES时，以双击的位置为中心点进行放大，地图中心点会改变；
+ 设置为NO时，以当前地图的中心点为中心进行放大，地图中心点不变；
+ 默认值为YES。
+ */
 @property(nonatomic, getter=isChangeCenterWithDoubleTouchPointEnabled) BOOL ChangeCenterWithDoubleTouchPointEnabled;
 
 /**
