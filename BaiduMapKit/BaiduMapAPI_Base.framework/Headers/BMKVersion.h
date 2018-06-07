@@ -1294,12 +1294,12 @@ v3.1.0
  */
 UIKIT_STATIC_INLINE NSString* BMKGetMapApiVersion()
 {
-    return @"4.1.0";
+    return @"4.1.1";
 }
 
 /**
  *获取当前地图API base组件 的版本号
- *当前base组件版本 : 4.1.0
+ *当前base组件版本 : 4.1.1
  *return  返回当前API base组件 的版本号
  */
 UIKIT_EXTERN NSString* BMKGetMapApiBaseComponentVersion();
