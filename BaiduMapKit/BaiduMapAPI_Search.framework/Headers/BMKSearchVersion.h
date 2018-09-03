@@ -18,7 +18,6 @@
 
 /**
  *获取当前地图API search组件 的版本号
- *当前search组件版本 : 4.1.1
  *return  返回当前API search组件 的版本号
  */
 UIKIT_EXTERN NSString* BMKGetMapApiSearchComponentVersion();

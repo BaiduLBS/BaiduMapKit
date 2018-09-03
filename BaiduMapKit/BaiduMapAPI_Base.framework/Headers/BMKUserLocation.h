@@ -5,26 +5,28 @@
 //  Created by Baidu on 3/26/14.
 //  Copyright (c) 2014 baidu. All rights reserved.
 //
-#import <CoreLocation/CLLocation.h>
-#import <Foundation/Foundation.h>
-#import "BMKBaseComponent.h"
-@class CLLocation;
-@class CLHeading;
+
+#import <CoreLocation/CoreLocation.h>
+
+#ifndef BMKUserLocation_h
+#define BMKUserLocation_h
 @interface BMKUserLocation : NSObject
 
 /// 位置更新状态，如果正在更新位置信息，则该值为YES
-@property (readonly, nonatomic, getter=isUpdating) BOOL updating;
+@property (nonatomic, assign, getter=isUpdating) BOOL updating;
 
 /// 位置信息，尚未定位成功，则该值为nil
-@property (readonly, nonatomic,strong) CLLocation *location;
+@property (nonatomic, strong) CLLocation *location;
 
 /// heading信息，尚未定位成功，则该值为nil
-@property (readonly, nonatomic, strong) CLHeading *heading;
+@property (nonatomic, strong) CLHeading *heading;
 
 /// 定位标注点要显示的标题信息
-@property (strong, nonatomic) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
-/// 定位标注点要显示的子标题信息.
-@property (strong, nonatomic) NSString *subtitle;
+/// 定位标注点要显示的子标题信息
+@property (nonatomic, copy) NSString *subtitle;
 
 @end
+
+#endif

@@ -8,20 +8,42 @@
 
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreLocation/CoreLocation.h>
-
 #import <UIKit/UIKit.h>
-typedef enum
-{
-    BMK_COORDTYPE_GPS = 0, ///GPS设备采集的原始GPS坐标（WGS-84）
-    BMK_COORDTYPE_COMMON,  ///GCJ坐标，google地图、soso地图、aliyun地图、mapabc地图和amap地图所用坐标
-    BMK_COORDTYPE_BD09LL,    ///bd09ll 百度经纬度坐标
-} BMK_COORD_TYPE;
-enum {
-    BMKMapTypeNone       = 0,               ///< 空白地图
-    BMKMapTypeStandard   = 1,               ///< 标准地图
-    BMKMapTypeSatellite  = 2,               ///< 卫星地图
+
+#ifndef BMKType_h
+#define BMKType_h
+//地图模块枚举
+typedef enum {
+    BMKMapModuleTile = 0,   //瓦片图模块
+} BMKMapModule;
+
+
+/**
+ 坐标类型
+
+ - BMK_COORDTYPE_GPS: GPS设备采集的原始GPS坐标（WGS-84）
+ - BMK_COORDTYPE_COMMON: GCJ坐标，google地图、soso地图、aliyun地图、mapabc地图和amap地图所用坐标
+ - BMK_COORDTYPE_BD09LL: 百度经纬度坐标
+ */
+typedef NS_ENUM(NSUInteger, BMK_COORD_TYPE) {
+    BMK_COORDTYPE_GPS = 0,
+    BMK_COORDTYPE_COMMON,
+    BMK_COORDTYPE_BD09LL,
 };
-typedef NSUInteger BMKMapType;
+
+/**
+ 底图展示的地图类型
+
+ - BMKMapTypeNone: 空白地图
+ - BMKMapTypeStandard: 标准地图
+ - BMKMapTypeSatellite: 卫星地图
+ */
+typedef NS_ENUM(NSUInteger, BMKMapType) {
+    BMKMapTypeNone = 0,
+    BMKMapTypeStandard = 1,
+    BMKMapTypeSatellite = 2,
+};
+
 
 typedef enum {
 	BMKErrorOk = 0,	///< 正确，无错误
@@ -47,6 +69,7 @@ typedef enum {
      *http://developer.baidu.com/map/index.php?title=lbscloud/api/appendix
      */
 }BMKPermissionCheckResultCode;
+
 //检索结果状态码
 typedef enum{
     BMK_SEARCH_NO_ERROR = 0,///<检索结果正常返回
@@ -85,23 +108,51 @@ typedef enum{
     BMK_OPEN_NETWOKR_ERROR,///网络连接错误
 }BMKOpenErrorCode;
 
-///表示一个经纬度范围
+/// 表示一个经纬度范围
 typedef struct {
-    CLLocationDegrees latitudeDelta;	///< 纬度范围
-    CLLocationDegrees longitudeDelta;	///< 经度范围
+    CLLocationDegrees latitudeDelta; /// 纬度范围
+    CLLocationDegrees longitudeDelta; /// 经度范围
 } BMKCoordinateSpan;
 
-///表示一个经纬度区域
-typedef struct {
-    CLLocationCoordinate2D northEast;	///< 东北角点经纬度坐标
-    CLLocationCoordinate2D southWest;	///< 西南角点经纬度坐标
-} BMKCoordinateBounds;
+/**
+ 构造BMKCoordinateSpan对象
+
+ @param latitudeDelta 纬度范围
+ @param longitudeDelta 经度范围
+ @return 根据指定参数生成的BMKCoordinateSpan对象
+ */
+UIKIT_STATIC_INLINE BMKCoordinateSpan BMKCoordinateSpanMake(CLLocationDegrees latitudeDelta, CLLocationDegrees longitudeDelta) {
+    BMKCoordinateSpan span;
+    span.latitudeDelta = latitudeDelta;
+    span.longitudeDelta = longitudeDelta;
+    return span;
+}
 
 ///表示一个经纬度区域
 typedef struct {
-	CLLocationCoordinate2D center;	///< 中心点经纬度坐标
-	BMKCoordinateSpan span;		///< 经纬度范围
+    CLLocationCoordinate2D northEast; /// 东北角点经纬度坐标
+    CLLocationCoordinate2D southWest; /// 西南角点经纬度坐标
+} BMKCoordinateBounds;
+
+
+///表示一个经纬度区域
+typedef struct {
+	CLLocationCoordinate2D center; /// 中心点经纬度坐标
+	BMKCoordinateSpan span; /// 经纬度范围
 } BMKCoordinateRegion;
+
+/**
+ *构造BMKCoordinateRegion对象
+ *@param centerCoordinate 中心点经纬度坐标
+ *@param span 经纬度的范围
+ *@return 根据指定参数生成的BMKCoordinateRegion对象
+ */
+UIKIT_STATIC_INLINE BMKCoordinateRegion BMKCoordinateRegionMake(CLLocationCoordinate2D centerCoordinate, BMKCoordinateSpan span) {
+    BMKCoordinateRegion region;
+    region.center = centerCoordinate;
+    region.span = span;
+    return region;
+}
 
 ///表示一个经纬度坐标点
 typedef struct {
@@ -109,23 +160,123 @@ typedef struct {
 	int longitudeE6;	///< 经度，乘以1e6之后的值
 } BMKGeoPoint;
 
-///地理坐标点，用直角地理坐标表示
+/// 地理坐标点，用直角地理坐标表示
 typedef struct {
-    double x;	///< 横坐标
-    double y;	///< 纵坐标
+    double x; /// 横坐标
+    double y; /// 纵坐标
 } BMKMapPoint;
 
-///矩形大小，用直角地理坐标表示
+/**
+ 构造BMKMapPoint对象
+
+ @param x 水平方向坐标值
+ @param y 垂直方向坐标值
+ @return 根据指定参数生成的BMKMapPoint对象
+ */
+UIKIT_STATIC_INLINE BMKMapPoint BMKMapPointMake(double x, double y) {
+    return (BMKMapPoint){x, y};
+}
+
+/// 矩形大小，用直角地理坐标表示
 typedef struct {
-    double width;	///< 宽度
-    double height;	///< 高度
+    double width; /// 宽度
+    double height; /// 高度
 } BMKMapSize;
 
-///矩形，用直角地理坐标表示
+/**
+ 构造BMKMapSize对象
+
+ @param width 宽度
+ @param height 高度
+ @return 根据指定参数生成的BMKMapSize对象
+ */
+UIKIT_STATIC_INLINE BMKMapSize BMKMapSizeMake(double width, double height) {
+    return (BMKMapSize){width, height};
+}
+
+/// 矩形，用直角地理坐标表示
 typedef struct {
-    BMKMapPoint origin; ///< 屏幕左上点对应的直角地理坐标
-    BMKMapSize size;	///< 坐标范围
+    BMKMapPoint origin; /// 屏幕左上点对应的直角地理坐标
+    BMKMapSize size; /// 坐标范围
 } BMKMapRect;
+
+/**
+ 构造BMKMapRect对象
+
+ @param x 矩形左上顶点的x坐标值
+ @param y 矩形左上顶点的y坐标值
+ @param width 矩形宽度
+ @param height 矩形高度
+ @return 根据指定参数生成的BMKMapRect对象
+ */
+UIKIT_STATIC_INLINE BMKMapRect BMKMapRectMake(double x, double y, double width, double height) {
+    return (BMKMapRect){ BMKMapPointMake(x, y), BMKMapSizeMake(width, height)};
+}
+
+/**
+ 判断指定矩形是否为NULL
+
+ @param rect BMKMapRect矩形对象
+ @return 如果矩形为NULL，返回YES，否则返回NO
+ */
+UIKIT_STATIC_INLINE BOOL BMKMapRectIsNull(BMKMapRect rect) {
+    return isinf(rect.origin.x) || isinf(rect.origin.y);
+}
+
+
+/**
+ 获取指定矩形的x轴坐标最小值
+ @param rect 指定的矩形
+ @return x轴坐标最小值
+ */
+UIKIT_STATIC_INLINE double BMKMapRectGetMinX(BMKMapRect rect) {
+    return rect.origin.x;
+}
+
+/**
+ 获取指定矩形的y轴坐标最小值
+ @param rect 指定的矩形
+ @return y轴坐标最小值
+ */
+UIKIT_STATIC_INLINE double BMKMapRectGetMinY(BMKMapRect rect) {
+    return rect.origin.y;
+}
+
+/**
+ 获取指定矩形在x轴中点的坐标值
+ @param rect 指定的矩形
+ @return x轴中点的坐标值
+ */
+UIKIT_STATIC_INLINE double BMKMapRectGetMidX(BMKMapRect rect) {
+    return rect.origin.x + rect.size.width / 2.0;
+}
+
+/**
+ 获取指定矩形在y轴中点的坐标值
+ @param rect 指定的矩形
+ @return y轴中点的坐标值
+ */
+UIKIT_STATIC_INLINE double BMKMapRectGetMidY(BMKMapRect rect) {
+    return rect.origin.y + rect.size.height / 2.0;
+}
+
+/**
+ 获取指定矩形的x轴坐标最大值
+ @param rect 指定的矩形
+ @return x轴坐标最大值
+ */
+UIKIT_STATIC_INLINE double BMKMapRectGetMaxX(BMKMapRect rect) {
+    return rect.origin.x + rect.size.width;
+}
+
+/**
+ 获取指定矩形的y轴坐标最大值
+ @param rect 指定的矩形
+ @return y轴坐标最大值
+ */
+UIKIT_STATIC_INLINE double BMKMapRectGetMaxY(BMKMapRect rect) {
+    return rect.origin.y + rect.size.height;
+}
 
 ///地图缩放比例
 typedef CGFloat BMKZoomScale;
@@ -188,3 +339,5 @@ UIKIT_EXTERN const BMKMapRect BMKMapRectNull;
 // 相对当前坐标点的距离，当有门牌号的时候返回数据
 @property (nonatomic, copy) NSString *distance;
 @end
+
+#endif

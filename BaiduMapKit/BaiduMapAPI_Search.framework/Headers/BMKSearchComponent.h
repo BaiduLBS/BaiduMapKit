@@ -11,11 +11,11 @@
 #import "BMKPoiSearch.h"
 #import "BMKPoiSearchType.h"
 #import "BMKPoiSearchOption.h"
-#import "BMKPOISearchResult.h"
+#import "BMKPoiSearchResult.h"
 
 // 地理编码
 #import "BMKGeocodeSearch.h"
-#import "BMKGeoCodeSearchOption.h"
+#import "BMKGeocodeSearchOption.h"
 #import "BMKGeocodeSearchResult.h"
 
 

@@ -8,35 +8,6 @@
 #import <BaiduMapAPI_Base/BMKTypes.h>
 #import <UIKit/UIKit.h>
 
-
-/**
- *构造BMKCoordinateSpan对象
- *@param latitudeDelta 纬度方向的变化量
- *@param longitudeDelta 经度方向的变化量
- *@return 根据指定参数生成的BMKCoordinateSpan对象
- */
-UIKIT_STATIC_INLINE BMKCoordinateSpan BMKCoordinateSpanMake(CLLocationDegrees latitudeDelta, CLLocationDegrees longitudeDelta)
-{
-    BMKCoordinateSpan span;
-    span.latitudeDelta = latitudeDelta;
-    span.longitudeDelta = longitudeDelta;
-    return span;
-}
-
-/**
- *构造BMKCoordinateRegion对象
- *@param centerCoordinate 中心点经纬度坐标
- *@param span 经纬度的范围
- *@return 根据指定参数生成的BMKCoordinateRegion对象
- */
-UIKIT_STATIC_INLINE BMKCoordinateRegion BMKCoordinateRegionMake(CLLocationCoordinate2D centerCoordinate, BMKCoordinateSpan span)
-{
-	BMKCoordinateRegion region;
-	region.center = centerCoordinate;
-    region.span = span;
-	return region;
-}
-
 /**
  *根据中心点和距离生成BMKCoordinateRegion
  *@param centerCoordinate 中心点坐标
@@ -81,92 +52,6 @@ UIKIT_EXTERN double BMKMapPointsPerMeterAtLatitude(CLLocationDegrees latitude);
  *@return 两点之间的距离，单位：米
  */
 UIKIT_EXTERN CLLocationDistance BMKMetersBetweenMapPoints(BMKMapPoint a, BMKMapPoint b);
-
-/**
- *构造BMKMapPoint对象
- *@param x 水平方向的坐标值
- *@param y 垂直方向的坐标值
- *@return 根据指定参数生成的BMKMapPoint对象
- */
-UIKIT_STATIC_INLINE BMKMapPoint BMKMapPointMake(double x, double y) {
-    return (BMKMapPoint){x, y};
-}
-
-/**
- *构造BMKMapSize对象
- *@param width 宽度
- *@param height 高度
- *@return 根据指定参数生成的BMKMapSize对象
- */
-UIKIT_STATIC_INLINE BMKMapSize BMKMapSizeMake(double width, double height) {
-    return (BMKMapSize){width, height};
-}
-
-/**
- *构造BMKMapRect对象
- *@param x 矩形左上顶点的x坐标值
- *@param y 矩形左上顶点的y坐标值
- *@param width 矩形宽度
- *@param height 矩形高度
- *@return 根据指定参数生成的BMKMapRect对象
- */
-UIKIT_STATIC_INLINE BMKMapRect BMKMapRectMake(double x, double y, double width, double height) {
-    return (BMKMapRect){ BMKMapPointMake(x, y), BMKMapSizeMake(width, height)};
-}
-
-/**
- *获取指定矩形的x轴坐标最小值
- *@param rect 指定的矩形
- *@return x轴坐标最小值
- */
-UIKIT_STATIC_INLINE double BMKMapRectGetMinX(BMKMapRect rect) {
-    return rect.origin.x;
-}
-
-/**
- *获取指定矩形的y轴坐标最小值
- *@param rect 指定的矩形
- *@return y轴坐标最小值
- */
-UIKIT_STATIC_INLINE double BMKMapRectGetMinY(BMKMapRect rect) {
-    return rect.origin.y;
-}
-
-/**
- *获取指定矩形在x轴中点的坐标值
- *@param rect 指定的矩形
- *@return x轴中点的坐标值
- */
-UIKIT_STATIC_INLINE double BMKMapRectGetMidX(BMKMapRect rect) {
-    return rect.origin.x + rect.size.width / 2.0;
-}
-
-/**
- *获取指定矩形在y轴中点的坐标值
- *@param rect 指定的矩形
- *@return y轴中点的坐标值
- */
-UIKIT_STATIC_INLINE double BMKMapRectGetMidY(BMKMapRect rect) {
-    return rect.origin.y + rect.size.height / 2.0;
-}
-
-/**
- *获取指定矩形的x轴坐标最大值
- *@param rect 指定的矩形
- *@return x轴坐标最大值
- */
-UIKIT_STATIC_INLINE double BMKMapRectGetMaxX(BMKMapRect rect) {
-    return rect.origin.x + rect.size.width;
-}
-
-/**
- *获取指定矩形的y轴坐标最大值
- *@param rect 指定的矩形
- *@return y轴坐标最大值
- */
-UIKIT_STATIC_INLINE double BMKMapRectGetMaxY(BMKMapRect rect) {
-    return rect.origin.y + rect.size.height;
-}
 
 /**
  *获取指定矩形的宽度
@@ -216,15 +101,6 @@ UIKIT_STATIC_INLINE BOOL BMKMapRectEqualToRect(BMKMapRect rect1, BMKMapRect rect
     return 
     BMKMapPointEqualToPoint(rect1.origin, rect2.origin) &&
     BMKMapSizeEqualToSize(rect1.size, rect2.size);
-}
-
-/**
- *判断指定矩形是否为NULL
- *@param rect 指定矩形
- *@return 如果矩形为NULL，返回YES，否则返回NO
- */
-UIKIT_STATIC_INLINE BOOL BMKMapRectIsNull(BMKMapRect rect) {
-    return isinf(rect.origin.x) || isinf(rect.origin.y);
 }
 
 /**
@@ -438,7 +314,7 @@ UIKIT_EXTERN CLLocationCoordinate2D BMKCoordTrans(CLLocationCoordinate2D coordin
  *@param type 待转换的坐标系类型，GPS为原始GPS坐标，COMMON为google坐标，51地图坐标，mapabc坐标
  *@return 返回的NSDictionry中包含“x”，“y”字段，各自对应经过base64加密之后的x，y坐标
  */
-UIKIT_EXTERN NSDictionary* BMKConvertBaiduCoorFrom(CLLocationCoordinate2D coordinate,BMK_COORD_TYPE type);
+UIKIT_EXTERN NSDictionary* BMKConvertBaiduCoorFrom(CLLocationCoordinate2D coordinate,BMK_COORD_TYPE type) __attribute__((deprecated("使用BMKCoordTrans方法代替")));
 
 /**
  *base64加密后的坐标字典解密函数

@@ -28,6 +28,22 @@ enum {
     BMKTypeAreaMultiPoiList = 45    ///<POI检索类型：多关键字范围搜索、周边搜索POI列表
 };
 
+#pragma mark - POI详情子节点信息类，需要权限（使用带有此权限的AK）
+@interface BMKPOIDetailChildrenInfo : NSObject
+/// poi子点uid
+@property (nonatomic, copy) NSString *uid;
+/// poi子点名称
+@property (nonatomic, copy) NSString *name;
+/// poi子点简称
+@property (nonatomic, copy) NSString *showName;
+/// poi子点类别
+@property (nonatomic, copy) NSString *tag;
+/// poi子节点经纬度
+@property (nonatomic, assign) CLLocationCoordinate2D pt;
+/// poi子点地址
+@property (nonatomic, copy) NSString *address;
+
+@end
 
 #pragma mark - POI信息类
 /// POI信息类
@@ -50,12 +66,22 @@ enum {
 @property (nonatomic, copy) NSString *area;
 /// POI对应的街景图ID
 @property (nonatomic, copy) NSString *streetID;
+/// POI类别
+@property (nonatomic, copy) NSString *tag;
 /// POI是否有详情信息
 @property (nonatomic, assign) BOOL hasDetailInfo;
 /// POI详情信息
 @property (nonatomic, strong) BMKPOIDetailInfo *detailInfo;
-@end
+/// 和当前坐标点的方向，注：此字段只对逆地理检索有效
+@property (nonatomic, copy) NSString *direction;
+/// 距离坐标点距离，注：此字段只对逆地理检索有效
+@property (nonatomic, assign) NSInteger distance;
+/// 邮编，注：此字段只对逆地理检索有效
+@property (nonatomic, copy) NSString *zipCode;
+/// 该POI对应的父POI，注：此字段只对逆地理检索有效
+@property (nonatomic, strong) BMKPoiInfo *parentPOI;
 
+@end
 
 #pragma mark - POI详情信息类
 @interface BMKPOIDetailInfo : NSObject
@@ -99,8 +125,10 @@ enum {
 @property (nonatomic, assign) NSInteger favoriteNumber;
 /// POI签到数目
 @property (nonatomic, assign) NSInteger checkInNumber;
-@end
+/// POI详情子节点信息，默认不返回，需要权限。
+@property (nonatomic, copy) NSArray <BMKPOIDetailChildrenInfo *> *children;
 
+@end
 
 #pragma mark - 室内POI信息类
 /// 室内POI信息类
