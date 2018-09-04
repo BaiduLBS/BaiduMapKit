@@ -65,5 +65,3 @@ xcrun bitcode_strip -r BaiduMapAPI_Base -o BaiduMapAPI_Base
 
 【修 复】
 1.若干bug修复
-
-
