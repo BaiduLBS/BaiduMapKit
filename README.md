@@ -47,21 +47,34 @@ LBS云检索：支持查询存储在LBS云内的自有数据；
  
 
 V4.2.0版本：
+
 【新 增】
+
 1.新增步骑行组件BaiduMapAPI_WalkNavi，WalkNavi组件需要和Base组件，MapForWalkNavi组件，Search组件，Location组件，Utils组件配合使用。其中需要注意的是，如果使用步骑行WalkNavi组件，则相应的地图功能需要使用MapForWalkNavi组件，而不是Map组件。
+
 2.POI检索（城市检索，周边检索）新增加父子节点功能 。当scope=2时，Poi的详细信息字段（BMKPOIDetailInfo）下新增children <BMKPOIDetailChildrenInfo>字段
+
 3.Sug检索 新增加父子节点功能（该功能需要权限）。当scope=2时，Suggestion检索结果（BMKSuggestionInfo）下新增children <BMKSuggestionChildrenInfo>字段
+
 4.GC检索的返回结果BMKGeoCodeSearchResult中，新增precise, confidence, level等字段。
+
 5.RGC检索的返回结果BMKReverseGeoCodeSearchResult中，新增poiRegions字段
 
 【优 化】
+
 1.不再区分普通版和Bitcode版，只发布支持Bitcode的版本，如果不需要Bitcode功能，可以自行剥离。以Base组件为例：
 xcrun bitcode_strip -r BaiduMapAPI_Base -o BaiduMapAPI_Base
+
 2.考虑到armv7兼容armv7s，因此不再提供armv7s的CPU架构。
+
 3.Map组件的体积缩减了13%。
+
 4.优化了地图引擎的内存管理
+
 5.不再提供Radar周边雷达组件
+
 6.不再提供Location定位组件，开发者可以使用定位SDK实现定位功能。
 
 【修 复】
+
 1.若干bug修复
