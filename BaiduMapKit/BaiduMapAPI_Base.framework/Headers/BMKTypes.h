@@ -63,10 +63,12 @@ typedef enum {
 	E_PERMISSIONCHECK_KEY_ERROR = 101,	//ak不存在
 	E_PERMISSIONCHECK_MCODE_ERROR = 102,	//mcode签名值不正确
 	E_PERMISSIONCHECK_UID_KEY_ERROR = 200,	// APP不存在，AK有误请检查再重试
-	E_PERMISSIONCHECK_KEY_FORBIDEN= 201,	// APP被用户自己禁用，请在控制台解禁
+	E_PERMISSIONCHECK_KEY_FORBIDEN = 201,	// APP被用户自己禁用，请在控制台解禁
+    E_PERMISSIONCHECK_KEY_DENY_BY_SERVER = 202, // APP被服务端管理员删除
+    E_PERMISSIONCHECK_USER_DENY_BY_SERVER = 252, // 用户被服务端管理员删除
     /*
      *更多鉴权状态码请参考：
-     *http://developer.baidu.com/map/index.php?title=lbscloud/api/appendix
+     *http://lbsyun.baidu.com/index.php?title=webapi/appendix
      */
 }BMKPermissionCheckResultCode;
 
