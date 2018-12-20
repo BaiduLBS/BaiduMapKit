@@ -1,7 +1,7 @@
 
 --------------------------------------------------------------------------------------
 
-iOS 地图 SDK V4.2.0是适用于iOS系统移动设备的矢量地图开发包
+iOS 地图 SDK V4.2.1是适用于iOS系统移动设备的矢量地图开发包
 
 --------------------------------------------------------------------------------------
 
@@ -41,25 +41,27 @@ LBS云检索：支持查询存储在LBS云内的自有数据；
  pod search BaiduMapKit  //查看最新地图SDK
 
 
-V4.2.0版本：
+V4.2.1版本：
 【新 增】
-1.新增步骑行组件BaiduMapAPI_WalkNavi，WalkNavi组件需要和Base组件，Map_For_WalkNavi组件，Search组件，Location组件，Utils组件配合使用。其中需要注意的是，如果使用步骑行WalkNavi组件，则相应的地图功能需要使用Map_For_WalkNavi组件，而不是Map组件。
-2.POI检索（城市检索，周边检索）新增加父子节点功能 。当scope=2时，Poi的详细信息字段（BMKPOIDetailInfo）下新增children <BMKPOIDetailChildrenInfo>字段
-3.Sug检索 新增加父子节点功能（该功能需要权限）。当scope=2时，Suggestion检索结果（BMKSuggestionInfo）下新增children <BMKSuggestionChildrenInfo>字段
-4.GC检索的返回结果BMKGeoCodeSearchResult中，新增precise, confidence, level等字段。
-5.RGC检索的返回结果BMKReverseGeoCodeSearchResult中，新增poiRegions字段
+1.BMKAnnotationView新增hidePaopaoWhenSingleTapOnMap、hidePaopaoWhenDrag、displayPriority等新字段，提供更灵活的控制annotationView和paopaoView显示层级的解决方案。
+2.BMKMapview新增 mapView:regionWillChangeAnimated:reason:和 mapView:regionDidChangeAnimated:reason: 两个回调，其中reason说明本次地图区域发生变化是由何种原因触发的。
+3.BMKMapview的方法selectAnnotation:animated:开始支持动画效果。
+4.支持长按paopaoView拖动annotationView。
+5.BMKLocationViewDisplayParam新增属性locationViewImage，支持由开发者提供定位图标的图片。
 
 【优 化】
-1.不再区分普通版和Bitcode版，只发布支持Bitcode的版本，如果不需要Bitcode功能，可以自行剥离。以Base组件为例：
-xcrun bitcode_strip -r BaiduMapAPI_Base -o BaiduMapAPI_Base
-2.考虑到armv7兼容armv7s，因此不再提供armv7s的CPU架构。
-3.Map组件的体积缩减了13%。
-4.优化了地图引擎的内存管理
-5.不再提供Radar周边雷达组件
-6.不再提供Location定位组件，开发者可以使用定位SDK实现定位功能。
+1.提升底图加载渲染速度。
+2.提升拖动地图时annotationView随地图移动的平滑度。
 
 【修 复】
-1.若干bug修复
+1.修复多页面多瓦片图切换时，瓦片图加载不出来的问题。
+2.修复断网后应用退到杀进程界面，从杀进程界面进入应用，进行重复多次会导致手机重启的问题。
+3.修复步行导航退出导航后，外部地图无法滑动的问题。
+4.修复地图比例尺可能会超出屏幕边界的问题。
+5.修复首次进入地图滑动地图没有mapView:regionWillChangeAnimated回调的问题。
+6.修复屏幕上添加固定标注后，showAnnotations方法显示不准确的问题。
+7.修复地图点击时，region没有发生变化，但是会触发regionchange回调的问题。
+8.修复用户按住某个annotation缩放或拖动过程中，会触发didSelectAnnotationView而不触发regionDidChangeAnimated的问题。
 
 ------------------------------------------------------------------------------------------------
 

@@ -52,6 +52,13 @@ typedef enum {
     BMKSwitchIndoorFloorNotExist,        /// 当前室内图不存在该楼层
 } BMKSwitchIndoorFloorError;
 
+///枚举：地图区域改变原因
+typedef enum {
+    BMKRegionChangeReasonGesture = 0,     /// 手势触发导致地图区域变化，如双击、拖拽、滑动地图
+    BMKRegionChangeReasonEvent,        /// 地图上控件事件，如点击指南针返回2D地图。
+    BMKRegionChangeReasonAPIs,      /// 开发者调用接口、设置地图参数等导致地图区域变化
+} BMKRegionChangeReason;
+
 ///地图View类，使用此View可以显示地图窗口，并且对地图进行相关的操作
 @interface BMKMapView : UIView
 
@@ -215,11 +222,9 @@ typedef enum {
 - (BOOL)zoomOut;
 
 /**
- *根据当前地图View的窗口大小调整传入的region，返回适合当前地图窗口显示的region，调整过程会保证中心点不改变
- *@param region 待调整的经纬度范围
- *@return 调整后适合当前地图窗口显示的经纬度范围
+ * 此接口什么都没做，已废弃。
  */
-- (BMKCoordinateRegion)regionThatFits:(BMKCoordinateRegion)region;
+- (BMKCoordinateRegion)regionThatFits:(BMKCoordinateRegion)region __deprecated_msg("此方法已废弃");
 
 /**
  *设定当前地图的显示范围
@@ -261,11 +266,9 @@ typedef enum {
 - (void)setVisibleMapRect:(BMKMapRect)mapRect animated:(BOOL)animate;
 
 /**
- *根据当前地图View的窗口大小调整传入的mapRect，返回适合当前地图窗口显示的mapRect，调整过程会保证中心点不改变
- *@param mapRect 待调整的地理范围，采用直角坐标系表示
- *@return 调整后适合当前地图窗口显示的地理范围，采用直角坐标系
+ *此方法什么都没做，已废弃。
  */
-- (BMKMapRect)mapRectThatFits:(BMKMapRect)mapRect;
+- (BMKMapRect)mapRectThatFits:(BMKMapRect)mapRect __deprecated_msg("此方法已废弃");
 
 /**
  *设定地图的显示范围,并使mapRect四周保留insets指定的边界区域
@@ -359,6 +362,15 @@ typedef enum {
  * @param ptInScreen 要设定的地图中心点位置，为屏幕坐标，设置的中心点不能超过屏幕范围，否则无效
  */
 - (void)setMapCenterToScreenPt:(CGPoint)ptInScreen;
+
+/**
+ 根据地理经纬度范围和边距计算BMKMapStatus
+
+ @param region 地理范围
+ @param insets 边距
+ @return BMKMapStatus
+ */
+- (BMKMapStatus *)getMapStatusFromCoordinateRegion:(BMKCoordinateRegion)region edgePadding:(UIEdgeInsets)insets;
 
 /**
  * 获取地图状态
@@ -630,11 +642,27 @@ typedef enum {
 - (void)mapView:(BMKMapView *)mapView regionWillChangeAnimated:(BOOL)animated;
 
 /**
+ *地图区域即将改变时会调用此接口
+ *@param mapView 地图View
+ *@param animated 是否动画
+ *@param reason 地区区域改变的原因
+ */
+- (void)mapView:(BMKMapView *)mapView regionWillChangeAnimated:(BOOL)animated reason:(BMKRegionChangeReason)reason;
+
+/**
  *地图区域改变完成后会调用此接口
  *@param mapView 地图View
  *@param animated 是否动画
  */
 - (void)mapView:(BMKMapView *)mapView regionDidChangeAnimated:(BOOL)animated;
+
+/**
+ *地图区域改变完成后会调用此接口
+ *@param mapView 地图View
+ *@param animated 是否动画
+ *@param reason 地区区域改变的原因
+ */
+- (void)mapView:(BMKMapView *)mapView regionDidChangeAnimated:(BOOL)animated reason:(BMKRegionChangeReason)reason;
 
 /**
  *根据anntation生成对应的View

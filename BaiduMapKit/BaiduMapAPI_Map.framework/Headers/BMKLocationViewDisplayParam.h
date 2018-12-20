@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, LocationViewHierarchy) {
 };
 
 ///此类表示定位图层自定义样式参数
-@interface BMKLocationViewDisplayParam : NSObject
+@interface BMKLocationViewDisplayParam : NSObject <NSCopying>
 
 ///定位图标X轴偏移量(屏幕坐标)
 @property (nonatomic, assign) CGFloat locationViewOffsetX;
@@ -36,7 +36,9 @@ typedef NS_ENUM(NSUInteger, LocationViewHierarchy) {
 ///跟随态旋转角度是否生效，默认YES
 @property (nonatomic, assign) BOOL isRotateAngleValid;
 ///定位图标名称，需要将该图片放到 mapapi.bundle/images 目录下
-@property (nonatomic, strong) NSString* locationViewImgName;
+@property (nonatomic, strong) NSString *locationViewImgName;
+///用户自定义定位图标，V4.2.1以后支持
+@property (nonatomic, strong) UIImage *locationViewImage;
 ///是否显示气泡，默认YES
 @property (nonatomic, assign) BOOL canShowCallOut;
 ///locationView在mapview上的层级 默认值为LOCATION_VIEW_HIERARCHY_BOTTOM

@@ -23,7 +23,13 @@ typedef NSUInteger BMKAnnotationViewDragState;
 
 #endif
 
-
+typedef float BMKFeatureDisplayPriority;
+//常规annotationView级别高
+static const BMKFeatureDisplayPriority BMKFeatureDisplayPriorityDefaultHigh = 750;
+//常规annotationView级别中，其中罗盘模式下，罗盘中的图片使用本级别,精度圈使用本级别。
+static const BMKFeatureDisplayPriority BMKFeatureDisplayPriorityDefaultMiddle = 500;
+//常规annotationView级别低
+static const BMKFeatureDisplayPriority BMKFeatureDisplayPriorityDefaultLow = 250;
 
 @class BMKAnnotationViewInternal;
 @protocol BMKAnnotation;
@@ -47,11 +53,10 @@ typedef NSUInteger BMKAnnotationViewDragState;
  */
 - (id)initWithAnnotation:(id <BMKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier;
 
-
 ///复用标志
 @property (nonatomic, readonly) NSString *reuseIdentifier;
 ///paopaoView
-@property (nonatomic, strong)BMKActionPaopaoView* paopaoView;
+@property (nonatomic, strong) BMKActionPaopaoView* paopaoView;
 
 /**
  *当view从reuse队列里取出时被调用
@@ -97,14 +102,27 @@ typedef NSUInteger BMKAnnotationViewDragState;
 ///显示在气泡右侧的view(使用默认气泡时，view的width最大值为32，height最大值为41，大于则使用最大值）
 @property (strong, nonatomic) UIView *rightCalloutAccessoryView;
 
-///当设为YES并实现了setCoordinate:方法时，支持将view在地图上拖动, ios 3.2以后支持
+///当设为YES并实现了setCoordinate:方法时，支持将view在地图上拖动, iOS 3.2以后支持
 @property (nonatomic, getter=isDraggable) BOOL draggable __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_2);
 
-///当前view的拖动状态, ios 3.2以后支持
+///当前view的拖动状态, iOS 3.2以后支持
 @property (nonatomic) BMKAnnotationViewDragState dragState __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_2);
 
+///当发生单击地图事件时，当前的annotation的泡泡是否隐藏，默认值为NO，V4.2.1以后支持
+@property (nonatomic, assign) BOOL hidePaopaoWhenSingleTapOnMap;
+///当发生双击地图事件时，当前的annotation的泡泡是否隐藏，默认值为NO，V4.2.1以后支持
+@property (nonatomic, assign) BOOL hidePaopaoWhenDoubleTapOnMap;
+///当发生两个手指点击地图（缩小地图）事件时，当前的annotation的泡泡是否隐藏，默认值为NO，V4.2.1以后支持
+@property (nonatomic, assign) BOOL hidePaopaoWhenTwoFingersTapOnMap;
+///当选中其他annotation时，当前annotation的泡泡是否隐藏，默认值为NO，V4.2.1以后支持
+@property (nonatomic, assign) BOOL hidePaopaoWhenSelectOthers;
+///当拖拽当前的annotation时，当前annotation的泡泡是否隐藏，默认值为NO，V4.2.1以后支持
+@property (nonatomic, assign) BOOL hidePaopaoWhenDrag;
+///当拖拽其他annotation时，当前annotation的泡泡是否隐藏，默认值为NO，V4.2.1以后支持
+@property (nonatomic, assign) BOOL hidePaopaoWhenDragOthers;
+///annotationView展示优先级，提供三种级别，其他级别开发者可自行设置，
+///默认值为BMKFeatureDisplayPriorityDefaultMiddle，V4.2.1以后支持,
+///级别数值越大越优先展示，同级别按照添加的先后顺序进行覆盖展示。
+@property (nonatomic, assign) BMKFeatureDisplayPriority displayPriority;
 
 @end
-
-
-
