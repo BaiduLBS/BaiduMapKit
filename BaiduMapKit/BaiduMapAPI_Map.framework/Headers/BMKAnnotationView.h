@@ -35,7 +35,11 @@ static const BMKFeatureDisplayPriority BMKFeatureDisplayPriorityDefaultLow = 250
 @protocol BMKAnnotation;
 @class BMKMapView;
 @class BMKMapViewInternal;
-///标注view
+/**
+ * 标注view
+ * 注意：如果在BMKAnnotationView中添加手势，会覆盖原本的点击和长按事件，不推荐这样使用。
+ * 如必须添加，请将手势的delegate设置到BMKAnnotationView中。
+ */
 @interface BMKAnnotationView : UIView
 {
 @private

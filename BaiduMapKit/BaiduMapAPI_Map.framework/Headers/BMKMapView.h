@@ -681,6 +681,8 @@ typedef enum {
 
 /**
  *当选中一个annotation views时，调用此接口
+ *当BMKAnnotation的title为nil，BMKAnnotationView的canShowCallout为NO时，不显示气泡，点击BMKAnnotationView会回调此接口。
+ *当气泡已经弹出，点击BMKAnnotationView不会继续回调此接口。
  *@param mapView 地图View
  *@param view 选中的annotation views
  */

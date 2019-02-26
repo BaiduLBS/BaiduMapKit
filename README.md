@@ -4,7 +4,7 @@
 
 --------------------------------------------------------------------------------------
 
-iOS 地图 SDK v4.2.0是适用于iOS系统移动设备的矢量地图开发包
+iOS 地图 SDK v4.3.0是适用于iOS系统移动设备的矢量地图开发包
 
 --------------------------------------------------------------------------------------
 
@@ -45,26 +45,29 @@ LBS云检索：支持查询存储在LBS云内的自有数据；
  pod setup //更新CocoPods的本地库
  pod search BaiduMapKit  //查看最新地图SDK
  
+ 
+ 
 
-V4.2.1版本：
+v4.3.0版本：
 
 【新 增】
-1.BMKAnnotationView新增hidePaopaoWhenSingleTapOnMap、hidePaopaoWhenDrag、displayPriority等新字段，提供更灵活的控制annotationView和paopaoView显示层级的解决方案。
-2.BMKMapview新增 mapView:regionWillChangeAnimated:reason:和 mapView:regionDidChangeAnimated:reason: 两个回调，其中reason说明本次地图区域发生变化是由何种原因触发的。
-3.BMKMapview的方法selectAnnotation:animated:开始支持动画效果。
-4.支持长按paopaoView拖动annotationView。
-5.BMKLocationViewDisplayParam新增属性locationViewImage，支持由开发者提供定位图标的图片。
-
+1.全面升级地图SDK Demo，采用全新UI设计，更严谨的代码风格，更丰富的演示样例。
+2.全面升级短串分享、行政区域检索、公交信息检索、室内路线检索、公交路线检索、跨城公交路线检索、驾乘路线检索、步行路线检索、骑行路线检索服务，单CPU架构（以ARM64为例）Search组件对集成App的体积贡献减少30%。
+3.新增paopaoView和annotationView添加事件和按钮的能力。
+4.支持arm64e CPU架构。
 【优 化】
-1.提升底图加载渲染速度。
-2.提升拖动地图时annotationView随地图移动的平滑度。
-
+1.升级优化地图手势，提高手势识别精准度，提升地图操作体验。
+2.优化标注（BMKAnnotationView）使用体验，贴近开发者使用方式。
 【修 复】
-1.修复多页面多瓦片图切换时，瓦片图加载不出来的问题。
-2.修复断网后应用退到杀进程界面，从杀进程界面进入应用，进行重复多次会导致手机重启的问题。
-3.修复步行导航退出导航后，外部地图无法滑动的问题。
-4.修复地图比例尺可能会超出屏幕边界的问题。
-5.修复首次进入地图滑动地图没有mapView:regionWillChangeAnimated回调的问题。
-6.修复屏幕上添加固定标注后，showAnnotations方法显示不准确的问题。
-7.修复地图点击时，region没有发生变化，但是会触发regionchange回调的问题。
-8.修复用户按住某个annotation缩放或拖动过程中，会触发didSelectAnnotationView而不触发regionDidChangeAnimated的问题。
+1.修复annotationView在地图以外的范围显示的问题。
+2.修复罗盘模式下，罗盘旋转异常的问题。
+3.修复瓦片图不使用缓存数据的问题。
+4.修复BMKAnnotationView的属性draggable为NO时，长按泡泡可以发生拖拽行为的问题。
+5.修复BMKMapView手势开关gestureEnable为NO时，ChangeCenterWithDoubleTouchPointEnabled为YES时，仍然可以旋转地图的问题。
+6.修复地图放在UIScrollView中无法响应手势的问题。
+7.修复多地图及其偶尔出现的纹理错乱的问题。
+8.修改地图BMKMapView中属性buildingsEnabled默认为NO的问题，应该是为YES，以及buildingsEnable后需要拖动一下地图才会更新效果。
+9.修复点击地图，region没有发生变化，但是触发regionDidChange的问题。
+10.修复isUserLocationVisible属性失效。
+11.修复单页面多地图场景下的内存泄漏问题。
+12.修复其他小bugs若干。

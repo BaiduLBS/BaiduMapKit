@@ -290,29 +290,24 @@ UIKIT_EXTERN const BMKMapRect BMKMapRectWorld;
 /// 空的直角坐标矩形
 UIKIT_EXTERN const BMKMapRect BMKMapRectNull;
 
-///线路检索节点信息,一个路线检索节点可以通过经纬度坐标或城市名加地名确定
-@interface BMKPlanNode : NSObject{
-    NSString*              _cityName;
-    NSString*              _name;
-    CLLocationCoordinate2D _pt;
-}
-
-///节点所在城市
-@property (nonatomic, strong) NSString* cityName;
-///节点所在城市ID
+/// 线路检索节点信息,一个路线检索节点可以通过经纬度坐标或城市名加地名确定
+@interface BMKPlanNode : NSObject
+/// 节点所在城市
+@property (nonatomic, copy) NSString *cityName;
+/// 节点所在城市ID
 @property (nonatomic, assign) NSInteger cityID;
-///节点名称
-@property (nonatomic, strong) NSString* name;
-///节点坐标
-@property (nonatomic) CLLocationCoordinate2D pt;
+/// 节点名称
+@property (nonatomic, copy) NSString *name;
+/// 节点坐标
+@property (nonatomic, assign) CLLocationCoordinate2D pt;
 @end
 
-///室内路线检索节点信息
+/// 室内路线检索节点信息
 @interface BMKIndoorPlanNode : NSObject
-///节点所在楼层
-@property (nonatomic, retain) NSString* floor;
-///节点坐标
-@property (nonatomic) CLLocationCoordinate2D pt;
+/// 节点所在楼层
+@property (nonatomic, copy) NSString *floor;
+/// 节点坐标
+@property (nonatomic, assign) CLLocationCoordinate2D pt;
 @end
 
 
