@@ -36,6 +36,12 @@
 @property (nonatomic, assign) CLLocationCoordinate2D location;
 /// 是否访问最新版行政区划数据（仅对中国数据生效）
 @property (nonatomic, assign) BOOL isLatestAdmin;
+/// 设置POI召回半径，允许设置区间为0-1000米，超过1000米按1000米召回，默认为1000米
+@property (nonatomic, assign) int radius;
+/// 设置每页容量，允许设置区间为0-100，默认为10条
+@property (nonatomic, assign) int pageSize;
+/// 分页编号
+@property (nonatomic, assign) int pageNum;
 @end
 
 

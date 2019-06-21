@@ -337,4 +337,6 @@ UIKIT_EXTERN const BMKMapRect BMKMapRectNull;
 @property (nonatomic, copy) NSString *distance;
 @end
 
+// 个性化地图样式加载通知name
+static NSString * const BMKCustomMapStyleLoaderNotification = @"BMKCustomMapStyleLoaderNotification";
 #endif

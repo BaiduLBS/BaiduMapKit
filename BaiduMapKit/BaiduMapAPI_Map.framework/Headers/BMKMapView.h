@@ -94,6 +94,9 @@ typedef enum {
 
 /// 地图俯视角度，在手机上当前可使用的范围为－45～0度
 @property (nonatomic) int overlooking;
+/// 地图俯视角度最小值（即角度最大值），在手机上当前可设置的范围为-45～0度
+@property (nonatomic) int minOverlooking;
+
 ///设定地图是否现显示3D楼块效果
 @property(nonatomic, getter=isBuildingsEnabled) BOOL buildingsEnabled;
 ///设定地图是否显示底图poi标注(不包含室内图标注)，默认YES
@@ -678,6 +681,14 @@ typedef enum {
  *@param views 新添加的annotation views
  */
 - (void)mapView:(BMKMapView *)mapView didAddAnnotationViews:(NSArray *)views;
+
+/**
+ *当点击一个annotation view时，调用此接口
+ *每次点击BMKAnnotationView都会回调此接口。
+ *@param mapView 地图View
+ *@param view 点击的annotation view
+ */
+- (void)mapView:(BMKMapView *)mapView clickAnnotationView:(BMKAnnotationView *)view;
 
 /**
  *当选中一个annotation views时，调用此接口

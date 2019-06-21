@@ -43,7 +43,7 @@ typedef enum
 @interface BMKNavigation : NSObject
 
 /**
-*调起百度地图客户端驾车导航页面
+*调起百度地图客户端驾车导航页面(不支持调起web地图)
 *@param para 调起驾车导航时传入得参数
 */
 + (BMKOpenErrorCode)openBaiduMapNavigation:(BMKNaviPara*)para;
