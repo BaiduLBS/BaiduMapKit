@@ -4,7 +4,7 @@
 
 --------------------------------------------------------------------------------------
 
-iOS 地图 SDK v4.4.0是适用于iOS系统移动设备的矢量地图开发包
+iOS 地图 SDK v4.4.2是适用于iOS系统移动设备的矢量地图开发包
 
 --------------------------------------------------------------------------------------
 
@@ -46,31 +46,21 @@ LBS云检索：支持查询存储在LBS云内的自有数据；
  pod search BaiduMapKit  //查看最新地图SDK
  
  
+ v4.4.2版本：
  
-v4.4.0版本：
-
-【新增】
-
-1.新增设置最大俯仰角属性minOverlooking。
-
-2.新增AnnocationView点击回调clickAnnotationView。
-
-3.逆地理编码option增加radius，pageSize，pageNum属性。
-
-【修复】
-
-1.修复云检索BMKCloudPOIInfo中uid数据类型导致的uid数值不准确问题，使用字符串类型的poiId代替。
-
-2.修复annocationView气泡隐藏属性不兼容老版本问题，hidePaopaoWhenSingleTapOnMap默认YES，hidePaopaoWhenSelectOthers默认YES。
-
-3.修复mapView代理只能设置一次的问题。
-
-4.修复驾车路线规划有途径点时返回终点信息有误问题。
-
-5.修复regionDidChangeAnimated回调异常问题。
-
-6.修复点击默认气泡回调annotationViewForBubble两次的问题。
-
-7.修复其他小bugs若干。
+ 【优 化】
+ 
+ 1.优化地图缩放等级变化时Polyline绘制动画效果。
+ 
+ 【修 复】
+ 
+ 1.修复弱网环境地图加载慢或加载失败问题。
+ 
+ 2.修复pinAnnotationView落下动画效果。
+ 
+ 3.修复annocationView的centerOffset设置不起作用问题。
+ 
+ 4.修复其他小bugs若干。
+ 
 
 ------------------------------------------------------------------------------------------------
