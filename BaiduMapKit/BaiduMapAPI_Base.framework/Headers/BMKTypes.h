@@ -336,7 +336,4 @@ UIKIT_EXTERN const BMKMapRect BMKMapRectNull;
 // 相对当前坐标点的距离，当有门牌号的时候返回数据
 @property (nonatomic, copy) NSString *distance;
 @end
-
-// 个性化地图样式加载通知name
-static NSString * const BMKCustomMapStyleLoaderNotification = @"BMKCustomMapStyleLoaderNotification";
 #endif

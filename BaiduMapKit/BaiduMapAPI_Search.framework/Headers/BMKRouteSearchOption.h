@@ -10,9 +10,15 @@
 #import "BMKRouteSearchType.h"
 /// 路线查询基础信息类
 @interface BMKBaseRoutePlanOption : NSObject
-///检索的起点，可通过关键字、坐标两种方式指定。cityName和cityID同时指定时，优先使用cityID
+/**
+ 检索的起点，可通过关键字、坐标两种方式指定。cityID可参考官方网站-开发文档-开发资源
+ 优先级：pt > cityID+name > cityName+name
+ */
 @property (nonatomic, strong) BMKPlanNode *from;
-///检索的终点，可通过关键字、坐标两种方式指定。cityName和cityID同时指定时，优先使用cityID
+/**
+ 检索的起点，可通过关键字、坐标两种方式指定。cityID可参考官方网站-开发文档-开发资源
+ 优先级：pt > cityID+name > cityName+name
+ */
 @property (nonatomic, strong) BMKPlanNode *to;
 @end
 

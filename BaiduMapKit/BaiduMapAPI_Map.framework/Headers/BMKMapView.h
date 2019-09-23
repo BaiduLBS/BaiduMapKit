@@ -14,6 +14,7 @@
 #import "BMKLocationViewDisplayParam.h"
 #import "BMKHeatMap.h"
 #import "BMKBaseIndoorMapInfo.h"
+#import "BMKCustomMapStyleOption.h"
 
 @protocol BMKMapViewDelegate;
 
@@ -167,12 +168,58 @@ typedef enum {
  *注：必须在BMKMapView对象初始化之前调用
  *@param customMapStyleJsonFilePath 自定义样式文件所在路径，包含文件名
  */
-+ (void)customMapStyle:(NSString*) customMapStyleJsonFilePath;
++ (void)customMapStyle:(NSString *)customMapStyleJsonFilePath __deprecated_msg("Please use - (void)setCustomMapStyleEnable:(BOOL)enable");
+
 /**
- * 自定义地图样式开关，影响所有BMKMapView对象
+ *自定义地图样式开关，影响所有BMKMapView对象
  *@param enable 自定义地图样式是否生效
  */
-+ (void)enableCustomMapStyle:(BOOL) enable;
++ (void)enableCustomMapStyle:(BOOL)enable __deprecated_msg("Please use - (void)setCustomMapStylePath:(NSString *)customMapStyleJsonFilePath");
+
+/**
+ V5.0.0版本新增
+ 设置个性化地图样式路径，仅影响当前BMKMapView对象，需在对象创建后调用
+
+ @param customMapStyleJsonFilePath 本地个性化样式文件所在路径，包含文件名
+ */
+- (void)setCustomMapStylePath:(NSString *)customMapStyleJsonFilePath;
+
+/**
+ V5.0.0版本新增
+ 设置个性化地图样式路径，仅影响当前BMKMapView对象，需在对象创建后调用
+
+ @param customMapStyleJsonFilePath 本地个性化样式文件所在路径，包含文件名
+ @param mode 加载模式，0:加载本地文件 1:加载在线文件或在线缓存文件
+ */
+- (void)setCustomMapStylePath:(NSString *)customMapStyleJsonFilePath mode:(int)mode;
+
+/**
+ V5.0.0版本新增
+ 个性化地图样式开关，仅影响当前BMKMapView对象，需在对象创建后调用
+
+ @param enable 当前自定义地图样式是否生效
+ */
+- (void)setCustomMapStyleEnable:(BOOL)enable;
+
+/**
+ V5.0.0版本新增
+ 在线个性化样式加载状态回调接口。
+ 在线个性化样式创建地址：http://lbsyun.baidu.com/apiconsole/custommap
+ 调用该接口加载个性化样式的默认策略为：
+ * 1、优先通过BMKCustomMapStyleOption配置的个性化样式ID，加载在线个性化样式；
+ * 2、如果配置的个性化样式ID无效或在线个性化样式请求失败，则加载本地缓存的最新一次请求成功的在线个性化样式；
+ * 3、如果本地缓存中没有最新一次请求成功的在线个性化样式，则通过BMKCustomMapStyleOption中配置的本地离线样式路径加载本地样式
+ * 4、如果以上样式加载都失败，则显示普通地图样式。
+ 
+ @param option 在线个性化样式配置选项
+ @param preLoad 当预加载成功时会执行的block对象，path：本地缓存的最新一次请求成功的在线个性化样式路径
+ @param success 当加载成功时会执行的block对象，path：请求成功的在线个性化样式路径
+ @param failure 当加载未成功时会执行的block对象，error：失败错误信息，path：失败后根据策略加载的个性化样式路径（路径可能会为nil）
+ */
+- (void)setCustomMapStyleWithOption:(BMKCustomMapStyleOption *)option
+                            preLoad:(void (^)(NSString *path))preLoad
+                            success:(void (^)(NSString *path))success
+                            failure:(void (^)(NSError *error, NSString *path))failure;
 
 /**
  自定义路况颜色。注意：如果需要自定义路况颜色，必须4种路况全都设置。4个参数全部合法时，自定义颜色才有效；否则全部使用默认的。
@@ -407,6 +454,22 @@ typedef enum {
  *  @return 支持返回YES，否则返回NO
  */
 - (BOOL)isSurpportBaiduHeatMap;
+
+/**
+ 获取OpenGL映射矩阵
+ V5.0.0版本新增，用于3D绘制场景
+
+ @return OpenGL映射矩阵数组
+ */
+- (float *)getProjectionMatrix;
+
+/**
+ 获取OpenGL视图矩阵
+ V5.0.0版本新增，用于3D绘制场景
+ 
+ @return   OpenGL视图矩阵数组
+ */
+- (float *)getViewMatrix;
 
 @end
 

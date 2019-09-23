@@ -44,6 +44,9 @@
 /// 该圆的外接矩形
 @property (nonatomic, readonly) BMKMapRect boundingMapRect;
 
+///设置中空区域，用来创建中间带空洞的复杂图形。注意：传入的overlay只支持BMKPolgon类型和BMKCircle类型. since 5.0.0
+@property (nonatomic, strong) NSArray<id<BMKOverlay>> *hollowShapes;
+
 /**
  *设置圆的中心点和半径
  *@param coord 中心点的经纬度坐标

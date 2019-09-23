@@ -12,7 +12,7 @@
 /// 公共交通路线查询结果类
 @interface BMKBusLineResult : NSObject
 /// 公交公司名称
-@property (nonatomic, copy) NSString *busCompany;
+@property (nonatomic, copy) NSString *busCompany __deprecated_msg("预留字段，现为空");
 /// 公交线路名称
 @property (nonatomic, copy) NSString *busLineName;
 /// 公交线路方向

@@ -62,7 +62,7 @@
 /// 结合当前位置POI的语义化结果描述
 @property (nonatomic, copy) NSString *sematicDescription;
 /// 城市编码（此字段不再更新，建议使用addressDetail中的adCode）
-@property (nonatomic, copy) NSString *cityCode; __deprecated_msg("自4.1.0不再更新");
+@property (nonatomic, copy) NSString *cityCode __deprecated_msg("自4.1.0不再更新");
 
 @end
 

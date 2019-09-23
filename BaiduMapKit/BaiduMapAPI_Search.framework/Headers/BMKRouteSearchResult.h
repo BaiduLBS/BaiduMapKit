@@ -12,7 +12,7 @@
 /// 步行路线规划结果类
 @interface BMKWalkingRouteResult : NSObject
 /// 该路线打车信息
-@property (nonatomic, strong) BMKTaxiInfo *taxiInfo;
+@property (nonatomic, strong) BMKTaxiInfo *taxiInfo __deprecated_msg("预留字段，现为空");
 /// 返回起点或终点的地址信息结果
 @property (nonatomic, strong) BMKSuggestAddrInfo *suggestAddrResult;
 /// 步行结果,现在只返回一条。成员类型为BMKWalkingRouteLine
@@ -23,7 +23,7 @@
 /// 驾车路线规划结果类
 @interface BMKDrivingRouteResult : NSObject
 /// 该路线打车信息
-@property (nonatomic, strong) BMKTaxiInfo *taxiInfo;
+@property (nonatomic, strong) BMKTaxiInfo *taxiInfo __deprecated_msg("预留字段，现为空");
 /// 返回起点或终点的地址信息结果
 @property (nonatomic, strong) BMKSuggestAddrInfo *suggestAddrResult;
 /// 驾车结果,支持多路线。成员类型为BMKDrivingRouteLine

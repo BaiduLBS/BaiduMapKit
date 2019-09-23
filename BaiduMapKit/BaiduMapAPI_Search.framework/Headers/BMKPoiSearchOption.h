@@ -123,7 +123,7 @@ typedef NS_ENUM(NSUInteger, BMKPOISearchScopeType) {
 @property (nonatomic, copy) NSString *city;
 /// 区域数据返回限制，可选，为true时，仅返回city对应区域内数据
 @property (nonatomic, assign) BOOL isCityLimit;
-/// 检索结果详细程度
+//// 检索结果详细程度 默认为BMK_POI_SCOPE_BASIC_INFORMATION
 @property (nonatomic, assign) BMKPOISearchScopeType scope;
 /// 检索过滤条件。scope字段为BMK_POI_SCOPE_DETAIL_INFORMATION时，filter字段才有效
 @property (nonatomic, strong) BMKPOISearchFilter *filter;
@@ -162,7 +162,7 @@ typedef NS_ENUM(NSUInteger, BMKPOISearchScopeType) {
  注意：值为true时会影响返回结果中total准确性及每页召回poi数量，我们会逐步解决此类问题。
  */
 @property (nonatomic, assign) BOOL isRadiusLimit;
-/// 检索结果详细程度
+/// 检索结果详细程度 默认为BMK_POI_SCOPE_BASIC_INFORMATION
 @property (nonatomic, assign) BMKPOISearchScopeType scope;
 /// 检索过滤条件。scope字段为BMK_POI_SCOPE_DETAIL_INFORMATION时，filter字段才有效
 @property (nonatomic, strong) BMKPOISearchFilter *filter;
@@ -192,7 +192,7 @@ typedef NS_ENUM(NSUInteger, BMKPOISearchScopeType) {
 @property (nonatomic, assign) CLLocationCoordinate2D leftBottom;
 /// 矩形检索区域的右上角经纬度坐标，必选
 @property (nonatomic, assign) CLLocationCoordinate2D rightTop;
-/// 检索结果详细程度
+/// 检索结果详细程度 默认为BMK_POI_SCOPE_BASIC_INFORMATION
 @property (nonatomic, assign) BMKPOISearchScopeType scope;
 /// 检索过滤条件。scope字段为BMK_POI_SCOPE_DETAIL_INFORMATION时，filter字段才有效
 @property (nonatomic, strong) BMKPOISearchFilter *filter;
@@ -206,7 +206,7 @@ typedef NS_ENUM(NSUInteger, BMKPOISearchScopeType) {
 #pragma mark - POI详情检索参数信息类
 /// POI详情检索信息类
 @interface BMKPOIDetailSearchOption : NSObject
-/// POI的唯一标识符集合，必选
+/// POI的唯一标识符集合，必选 注：从POI检索的返回结果BMKPoiInfo里获取。
 @property (nonatomic, copy) NSArray<NSString *> *poiUIDs;
 /// 检索结果详细程度
 @property (nonatomic, assign) BMKPOISearchScopeType scope;
@@ -216,7 +216,7 @@ typedef NS_ENUM(NSUInteger, BMKPOISearchScopeType) {
 #pragma mark - POI室内检索参数信息类
 /// 室内POI检索参数信息类
 @interface BMKPOIIndoorSearchOption : NSObject
-/// 室内检索唯一标识符，必选
+/// 室内检索唯一标识符，必选 注：从进入/移出室内图的回调方法中获取。
 @property (nonatomic, copy) NSString *indoorID;
 /// 室内检索关键字，必选
 @property (nonatomic, copy) NSString *keyword;

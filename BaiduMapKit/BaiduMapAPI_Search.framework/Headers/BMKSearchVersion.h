@@ -20,12 +20,12 @@
  *获取当前地图API search组件 的版本号
  *return  返回当前API search组件 的版本号
  */
-UIKIT_EXTERN NSString* BMKGetMapApiSearchComponentVersion();
+UIKIT_EXTERN NSString* BMKGetMapApiSearchComponentVersion(void);
 
 /**
  *检查search组件的版本号是否和base组件的版本号一致
  *return    版本号一致返回YES
  */
-UIKIT_EXTERN BOOL BMKCheckSearchComponentIsLegal();
+UIKIT_EXTERN BOOL BMKCheckSearchComponentIsLegal(void);
 
 #endif /* BMKSearchVersion_h */

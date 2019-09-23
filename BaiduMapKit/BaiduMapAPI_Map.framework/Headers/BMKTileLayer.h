@@ -36,9 +36,9 @@
 /// 同initWithURLTemplate:中的URLTemplate
 @property (readonly) NSString *URLTemplate;
 
-/*!
+/**
  @brief 根据指定的URLTemplate生成tileOverlay
- @param URLTemplate是一个包含"{x}","{y}","{z}"的字符串,"{x}","{y}"表示tile的坐标，"{z}"表示当tile显示的级别。"{x}","{y}","{z}"会被tile的坐标值所替换，并生成用来加载tile图片数据的URL 。例如： http://server/path?x={x}&y={y}&z={z}。
+ @param URLTemplate 是一个包含"{x}","{y}","{z}"的字符串,"{x}","{y}"表示tile的坐标，"{z}"表示当tile显示的级别。"{x}","{y}","{z}"会被tile的坐标值所替换，并生成用来加载tile图片数据的URL 。例如： http://server/path?x={x}&y={y}&z={z}。
  @return 以指定的URLTemplate字符串生成tileOverlay
  */
 - (id)initWithURLTemplate:(NSString *)URLTemplate;
@@ -59,7 +59,9 @@
 /**
  @brief 通过同步方法获取瓦片数据，子类必须实现该方法
         这个方法会在多个线程中调用，需要考虑线程安全
- @param (x, y, zoom)瓦片坐标
+ @param x 瓦片坐标
+ @param y 瓦片坐标
+ @param zoom 瓦片坐标
  @return (x, y, zoom)所对应瓦片的UIImage对象
 */
 - (UIImage *)tileForX:(NSInteger)x y:(NSInteger)y zoom:(NSInteger)zoom;
@@ -74,11 +76,12 @@
 
 /**
  @brief 通过异步方法获取瓦片数据，子类必须实现该方法
- @param (x, y, zoom)瓦片坐标
- @return result 用来传入瓦片数据或加载瓦片失败的error访问的回调block
+ @param x 瓦片坐标
+ @param y 瓦片坐标
+ @param zoom 瓦片坐标
+ @param result 用来传入瓦片数据或加载瓦片失败的error访问的回调block
  */
 - (void)loadTileForX:(NSInteger)x y:(NSInteger)y zoom:(NSInteger)zoom result:(void (^)(UIImage *tileImage, NSError *error))result;
 
 @end
-
 #endif /* BMKTileLayer_h */
