@@ -292,6 +292,14 @@ typedef enum {
 @property (nonatomic, assign) BOOL hasTrafficsInfo;
 /// 路段的路况信息，成员为NSNumber。0：无数据；1：畅通；2：缓慢；3：拥堵
 @property (nonatomic, copy) NSArray <NSNumber *> *traffics;
+/**
+ 道路类型(Since 5.1.0)
+ 枚举值：返回0-9之间的值
+ 0：高速路  1：城市高速路  2:   国道  3：省道   4：县道    5：乡镇村道
+ 6：其他道路  7：九级路  8：航线(轮渡)  9：行人道路
+ */
+@property (nonatomic, assign) int roadLevel;
+
 @end
 
 

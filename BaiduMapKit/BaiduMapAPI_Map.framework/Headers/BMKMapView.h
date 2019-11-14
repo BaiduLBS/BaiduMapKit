@@ -95,7 +95,7 @@ typedef enum {
 
 /// 地图俯视角度，在手机上当前可使用的范围为－45～0度
 @property (nonatomic) int overlooking;
-/// 地图俯视角度最小值（即角度最大值），在手机上当前可设置的范围为-45～0度
+/// 地图俯视角度最小值（即角度最大值），在手机上当前可设置的范围为-79～0度
 @property (nonatomic) int minOverlooking;
 
 ///设定地图是否现显示3D楼块效果
