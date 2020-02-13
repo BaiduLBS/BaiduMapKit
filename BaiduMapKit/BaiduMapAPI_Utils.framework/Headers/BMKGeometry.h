@@ -41,7 +41,7 @@ UIKIT_EXTERN CLLocationCoordinate2D BMKConvertToBD09LLFromBaiduMercator(CGPoint 
 
 /**
  经纬度坐标之间的坐标转换
- 支持WGS84LL->BD09LL, GCJ02LL->BD09LL, BD09LL->GCJ02LL
+ 支持WGS84LL->BD09LL, WGS84LL->GCJ02LL, GCJ02LL->BD09LL, BD09LL->GCJ02LL
  输入输出坐标为其他类型时，认为是非法输入，返回的坐标中经纬度均为0
  
  @param coordinate 待转换的原始经纬度坐标

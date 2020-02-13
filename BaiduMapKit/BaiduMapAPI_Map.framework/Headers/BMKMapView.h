@@ -688,6 +688,13 @@ typedef enum {
 - (void)mapViewDidFinishLoading:(BMKMapView *)mapView;
 
 /**
+ *地图绘制出有效数据时调用此接口
+ *@param mapView 地图View
+ *@param error 错误码
+*/
+- (void)mapViewDidRenderValidData:(BMKMapView *)mapView withError:(NSError *)error;
+
+/**
  *地图渲染完毕后会调用此接口
  *@param mapView 地图View
  */

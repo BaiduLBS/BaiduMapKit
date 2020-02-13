@@ -412,6 +412,9 @@ typedef enum {
 @property (nonatomic, assign) NSInteger congestionMetres;
 /// 路线预估打车费(元)，负数表示无打车费信息
 @property (nonatomic, assign) NSInteger taxiFares;
+/// since 5.2.0  此路线道路收费，单位：元(此高速费为预估价格，与实际高速收费并不完全一致)
+@property (nonatomic, assign) NSInteger toll;
+
 @end
 
 /// 此类表示一条步行路线

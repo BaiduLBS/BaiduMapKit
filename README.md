@@ -4,7 +4,7 @@
 
 --------------------------------------------------------------------------------------
 
-iOS 地图 SDK v5.1.0是适用于iOS系统移动设备的矢量地图开发包
+iOS 地图 SDK v4.3.0是适用于iOS系统移动设备的矢量地图开发包
 
 --------------------------------------------------------------------------------------
 
@@ -37,52 +37,46 @@ LBS云检索：支持查询存储在LBS云内的自有数据；
  
  
  【 温 馨 提 示 】
- 
  【 注 意 】
- 
- 1、自v3.2.0起，百度地图iOSSDK全面支持HTTPS，需要广大开发者导入第三方openssl静态库：libssl.a和libcrypto.a（存放于thirdlib目录下）
- 
+ 1、自v3.2.0起，百度地图iOS SDK全面支持HTTPS，需要广大开发者导入第三方openssl静态库：libssl.a和libcrypto.a（存放于thirdlib目录下）
  添加方法：在 TARGETS->Build Phases-> Link Binary With Libaries中点击“+”按钮，在弹出的窗口中点击“Add Other”按钮，选择libssl.a和libcrypto.a添加到工程中 。
  
  2、支持CocoaPods导入
- 
  pod setup //更新CocoPods的本地库
- 
  pod search BaiduMapKit  //查看最新地图SDK
  
- 
- v5.1.0版本：
- 
-【新 增】
 
-1.驾车路线规划返回结果新增道路类型字段：roadLevel。
+v5.2.0版本：
 
-2.个性化地图新增村庄数据分类：featureType -> village
+新增：
 
-3.更新个性化地图元素数据。
+1.驾车路线规划新增路线收费字段：toll。
 
+2.步骑行增加获取导航地图对象接口：- (BMKMapView *)getNaviMap;。
 
-【优 化】
+3.地图新增mapViewDidRenderValidData:withError:回调方法，方便开发者确定地图加载失败原因。
 
-1.minOverlooking设置范围改为-79～0。
-
-2.优化步骑行导航组件的图片资源，减小包体积。
-
-3.适配iOS 13新特性。
+4.支持动态设置BMKAnnotationView的展示优先级属性：displayPriority。
 
 
-【修 复】
+优化：
 
-1.修复mapView设置frame为0时，annotationView的origin为NaN导致的crash问题。
+1.优化步骑行导航页面布局。
 
-2.修复自定义热力图在iphone 5c之前机型上绘制颜色有误问题。
+2.优化AnnotationView绘制性能。
 
-3.修复部分个性化地图样式分级别控制不生效问题。
 
-4.修复地图部分铁路线不显示问题。
+修复：
+
+1.修复异步加载本地瓦片图部分瓦片空白问题。
+
+2.修复自定义热力图透明遮罩问题。
+
+3.修复在地图onMapLoadFinish回调中修改地图状态，regionWillChangeAnimated方法不回调的问题。
+
+4.修复特定ipv6环境下地图出现网格的问题。
 
 5.修复其他已知问题。
 
-
- 
 ------------------------------------------------------------------------------------------------
+
