@@ -183,8 +183,9 @@
  @param keepScale 纹理图片是否缩放（(纹理绘制生效)
  @param lineJoinType 拐角衔接方式（默认kBMKLineJoinBevel）
  @param lineCapType 头部处理方式（默认kBMKLineCapButt）
+ @param isThined 是否对坐标点数据进行抽稀
  */
-- (void)renderTexturedPolyLineWithPoints:(NSArray <NSValue *> *)points lineWidth:(CGFloat)lineWidth textureID:(GLuint)textureID strokeColor:(UIColor *)strokeColor  isFoucs:(BOOL)isFoucs keepScale:(BOOL)keepScale  lineJoinType:(BMKLineJoinType)lineJoinType lineCapType:(BMKLineCapType)lineCapType;
+- (void)renderTexturedPolyLineWithPoints:(NSArray <NSValue *> *)points lineWidth:(CGFloat)lineWidth textureID:(GLuint)textureID strokeColor:(UIColor *)strokeColor  isFoucs:(BOOL)isFoucs keepScale:(BOOL)keepScale  lineJoinType:(BMKLineJoinType)lineJoinType lineCapType:(BMKLineCapType)lineCapType isThined:(BOOL)isThined;
 
 /**
  使用OpenGLES 分段多纹理/多颜色绘制线 since 5.0.0
@@ -195,8 +196,9 @@
  @param keepScale 纹理图片是否缩放(纹理绘制生效)
  @param lineJoinType 拐角衔接方式（默认kBMKLineJoinBevel）
  @param lineCapType 头尾处理样式(默认kBMKLineCapButt)
+ @param isThined 是否对坐标点数据进行抽稀
  */
--(void)renderMultiTexturedPolyLineWithPartPoints:(NSArray*)partPt lineWidth:(CGFloat)lineWidth textureIndexs:(NSArray<NSNumber *> *)textureIndexs  isFoucs:(BOOL)isFoucs keepScale:(BOOL)keepScale  lineJoinType:(BMKLineJoinType)lineJoinType lineCapType:(BMKLineCapType)lineCapType;
+-(void)renderMultiTexturedPolyLineWithPartPoints:(NSArray*)partPt lineWidth:(CGFloat)lineWidth textureIndexs:(NSArray<NSNumber *> *)textureIndexs  isFoucs:(BOOL)isFoucs keepScale:(BOOL)keepScale  lineJoinType:(BMKLineJoinType)lineJoinType lineCapType:(BMKLineCapType)lineCapType isThined:(BOOL)isThined;
 
 /**
  使用OpenGLES 按指定单色绘制虚线 since 5.0.0
@@ -204,8 +206,9 @@
  @param lineWidth OpenGLES支持线宽尺寸
  @param strokeColor 虚线颜色
  @param lineDashType 虚线样式
+ @param isThined 是否对坐标点数据进行抽稀
  */
-- (void)renderDashPolyLineWithPoints:(NSArray <NSValue *> *)points lineWidth:(CGFloat)lineWidth strokeColor:(UIColor *)strokeColor lineDashType:(BMKLineDashType)lineDashType;
+- (void)renderDashPolyLineWithPoints:(NSArray <NSValue *> *)points lineWidth:(CGFloat)lineWidth strokeColor:(UIColor *)strokeColor lineDashType:(BMKLineDashType)lineDashType isThined:(BOOL)isThined;
 
 /**
  使用OpenGLES 分段多颜色虚线 since 5.0.0
@@ -213,9 +216,9 @@
  @param lineWidth OpenGLES支持线宽尺寸
  @param textureIndexs 分段纹理索引,使用colors;加载
  @param lineDashType 虚线样式
+ @param isThined 是否对坐标点数据进行抽稀
  */
--(void)renderMultiDashPolyLineWithPartPoints:(NSArray*)partPt lineWidth:(CGFloat)lineWidth textureIndexs:(NSArray<NSNumber *> *)textureIndexs lineDashType:(BMKLineDashType)lineDashType;
-
+-(void)renderMultiDashPolyLineWithPartPoints:(NSArray*)partPt lineWidth:(CGFloat)lineWidth textureIndexs:(NSArray<NSNumber *> *)textureIndexs lineDashType:(BMKLineDashType)lineDashType isThined:(BOOL)isThined;
 /**
  *使用OpenGLES 绘制区域
  @param points 直角坐标点

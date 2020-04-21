@@ -12,6 +12,9 @@
 /// 此类用于定义一段折线
 @interface BMKPolyline : BMKMultiPoint <BMKOverlay>
 
+/// 是否需要对Polyline坐标数据进行抽稀，默认为YES
+@property (nonatomic, assign) BOOL isThined;
+
 /**
  *根据指定坐标点生成一段折线
  *@param points 指定的直角坐标点数组
