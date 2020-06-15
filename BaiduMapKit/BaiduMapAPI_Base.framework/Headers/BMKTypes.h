@@ -17,6 +17,28 @@ typedef enum {
     BMKMapModuleTile = 0,   //瓦片图模块
 } BMKMapModule;
 
+//天气服务类型枚举
+typedef enum {
+    BMKWeatherServerTypeDefault = 0,   // 国内
+    BMKLanguageServerTypeAbroad // 海外
+} BMKWeatherServerType;
+
+//语言类型枚举
+typedef enum {
+    BMKLanguageTypeChinese = 0,   // 中文
+    BMKLanguageTypeEnglish
+} BMKLanguageType;
+
+//天气数据类型枚举
+typedef enum {
+    BMKWeatherDataTypeNow = 0,   // 实时天气预报
+    BMKWeatherDataTypeForecasts, // 未来五天天气预报
+    BMKWeatherDataTypeForecastsForHour, // 按小时天气预报，高级字段
+    BMKWeatherDataTypeLifeIndex, // 生活指数，仅支持国内，高级字段
+    BMKWeatherDataTypeAlert, // 天气事件预警，仅支持国内，高级字段
+    BMKWeatherDataTypeAll // 以上全部，高级字段获取对应权限后可返回
+} BMKWeatherDataType;
+
 
 /**
  坐标类型
@@ -91,6 +113,8 @@ typedef enum{
     BMK_SEARCH_INDOOR_ROUTE_NO_IN_SAME_BUILDING,///起终点不在同一个室内
     BMK_SEARCH_PARAMETER_ERROR,///参数错误
     BMK_SEARCH_SERVER_ERROR,//服务器错误
+    BMK_SEARCH_SERVER_DISTRICT_ID_ERROR,// 天气服务查询的区域编码与约定的编码不符
+    BMK_SEARCH_SERVER_NO_PERMISSIONS,// 用户需开通高级权限功能
 }BMKSearchErrorCode;
 
 //调起百度地图结果状态码

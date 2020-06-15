@@ -104,8 +104,8 @@ typedef enum{
  *返回云RGC检索结果
  *@param cloudRGCResult 搜索结果
  *@param type 返回结果类型： BMK_CLOUD_RGC_SEARCH
- *@param error 错误号，@see BMKCloudErrorCode
+ *@param errorCode 错误号，@see BMKCloudErrorCode
  */
-- (void)onGetCloudReverseGeoCodeResult:(BMKCloudReverseGeoCodeResult*)cloudRGCResult searchType:(BMKCloudSearchType) type errorCode:(NSInteger) errorCode;
+- (void)onGetCloudReverseGeoCodeResult:(BMKCloudReverseGeoCodeResult*)cloudRGCResult searchType:(BMKCloudSearchType) type errorCode:(NSInteger)errorCode;
 
 @end
